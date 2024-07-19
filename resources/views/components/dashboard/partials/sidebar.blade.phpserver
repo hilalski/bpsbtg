@@ -1,0 +1,97 @@
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar" style="background-image: url({{ asset('assets/img/home/bg/bgdesc.png') }});">
+    <ul class="sidebar-nav" id="sidebar-nav">
+        @foreach($menu->where('on_sidebar', true) as $m)
+
+            {{-- Judul Menu --}}
+            @if ($m->name === 'Rapat')
+                <li class="nav-heading">Rapat & Perizinan</li>
+            @elseif ($m->name === 'Penilaian')
+                <li class="nav-heading">Penilaian</li>
+            @elseif ($m->name === 'Progress PKL')
+                <li class="nav-heading">Progress PKL</li>
+            @elseif ($m->name === 'Publikasi')
+                <li class="nav-heading">Publikasi</li>
+            @elseif ($m->name === 'Aspirasi')
+                <li class="nav-heading">Aspirasi</li>
+            @elseif ($m->name === 'Lainnya')
+                <li class="nav-heading">Lainnya</li>
+            @endif
+
+            {{-- Daftar Menu --}}
+            <li class="nav-item">
+                @if($m->submenu->isNotEmpty())
+                    <a class="nav-link {{ Str::contains(request()->url(), "/63-d4/dashboard/{$m->url}") ? '' : 'collapsed' }}" data-bs-target="#{{ $m->url }}-nav" data-bs-toggle="collapse" href="#">
+                        <i class="{{ $m->icon }}"></i>
+                        <span>{{ $m->name }}</span>
+                        <i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="{{ $m->url }}-nav" class="nav-content collapse {{ Str::contains(request()->url(), "/63-d4/dashboard/{$m->url}") ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
+                        @foreach($m->submenu as $sm)
+                            @if ($sm->name === 'Jadwal' && $m->name === 'Rapat')
+                                <li>
+                                    <a href="/63-d4/dashboard/{{ $m->url }}/{{ $sm->url }}" class="{{ Str::contains(request()->url(), "/63-d4/dashboard/{$m->url}/{$sm->url}") ? 'active' : '' }}">
+                                        <i class="{{ $sm->icon }}"></i>
+                                        <span>{{ $sm->name }}</span>
+                                    </a>
+                                </li>
+                            @endif
+                            @can('bph42')
+                                @if ($sm->name === 'Monitoring' && $m->name === 'Rapat')
+                                    <li>
+                                        <a href="/63-d4/dashboard/{{ $m->url }}/monitoring" class="{{ Str::contains(request()->url(), "/63-d4/dashboard/{$m->url}/{$sm->url}") ? 'active' : '' }}">
+                                            <i class="{{ $sm->icon }}"></i>
+                                            <span>{{ $sm->name }}</span>
+                                        </a>
+                                    </li>
+                                @endif
+                            @endcan
+                            @can('sekretaris')
+                                @if ($sm->name === 'Dashboard' && $m->name === 'Rapat')
+                                    <li>
+                                        <a href="/63-d4/dashboard/{{ $m->url }}/{{ $sm->url }}" class="{{ Str::contains(request()->url(), "/63-d4/dashboard/{$m->url}/{$sm->url}") ? 'active' : '' }}">
+                                            <i class="{{ $sm->icon }}"></i>
+                                            <span>{{ $sm->name }}</span>
+                                        </a>
+                                    </li>
+                                @endif
+                            @endcan
+                            @can('sekretaris') 
+                                @if ($sm->name === 'Konfirmasi' && $m->name === 'Perizinan')
+                                    <li>
+                                        <a href="/63-d4/dashboard/{{ $m->url }}/{{ $sm->url }}" class="{{ Str::contains(request()->url(), "/63-d4/dashboard/{$m->url}/{$sm->url}") ? 'active' : '' }}">
+                                            <i class="{{ $sm->icon }}"></i>
+                                            <span>{{ $sm->name }}</span>
+                                        </a>
+                                    </li>
+                                @endif
+                            @endcan
+                            @if ($sm->name === 'Riwayat' && $m->name === 'Perizinan')
+                            <li>
+                                <a href="/63-d4/dashboard/{{ $m->url }}/{{ $sm->url }}" class="{{ Str::contains(request()->url(), "/63-d4/dashboard/{$m->url}/{$sm->url}") ? 'active' : '' }}">
+                                    <i class="{{ $sm->icon }}"></i>
+                                    <span>{{ $sm->name }}</span>
+                                </a>
+                            </li>
+                            @endif
+                        @endforeach
+                    </ul>
+                @else
+                    @if ($m->url === 'dashboard')
+                        <a class="nav-link {{ url()->current() === url("https://pkl.stis.ac.id/63-d4/dashboard") ? '' : 'collapsed' }} " href="/63-d4/{{ $m->url }}">
+                            <i class="{{ $m->icon }}"></i>
+                            <span>{{ $m->name }}</span>
+                        </a>
+                    @else
+                        <a class="nav-link {{ url()->current() === url("https://pkl.stis.ac.id/63-d4/dashboard/{$m->url}") ? '' : 'collapsed' }}"
+                            href="/63-d4/dashboard/{{ $m->url }}">
+                            <i class="{{ $m->icon }}"></i>
+                            <span>{{ $m->name }}</span>
+                        </a>
+                    @endif
+                @endif
+            </li>
+        @endforeach
+    </ul>
+</aside>
+<!-- ======= End Sidebar ======= -->

@@ -1,0 +1,20 @@
+body {
+    overflow: hidden;
+}
+
+.btns {
+    background: var(--branding-secondary-color);
+    border-radius: 20px;
+    padding: 10px 25px;
+    color: var(--branding-base-color);
+    transition: background 0.3s ease;
+}
+.btns:hover {
+    background: #005b96; /* Adjust the alpha value for opacity */
+    color: var(--branding-base-color);
+}
+@media screen and (max-width: 576px) {
+    img {
+        width: 75%;
+    }
+}

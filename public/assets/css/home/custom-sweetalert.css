@@ -1,0 +1,11 @@
+.status-custom-confirm-button {
+    background-color: #1db6bd !important; /* Warna biru untuk tombol confirm */
+}
+
+.status-custom-deny-button {
+    background-color: #dd7341 !important; /* Warna oranye untuk tombol deny */
+}
+
+.status-custom-cancel-button {
+    background-color: #c5c8d9 !important; /* Warna abu-abu untuk tombol cancel */
+}

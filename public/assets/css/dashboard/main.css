@@ -1,0 +1,58 @@
+#icon-dropdown-menu-bau {
+    margin-right: 5px;
+    min-width: 22.5px;
+}
+
+#menu-logout-bau {
+    color: red !important;
+    cursor: pointer !important;
+}
+#logout-bau {
+    all: unset;
+}
+
+#name-dropdown-menu-bau {
+    display: block;
+    font-weight: 700;
+    color: black;
+}
+
+#nip-dropdown-menu-bau {
+    display: block;
+    font-weight: 500;
+    color: black;
+}
+
+.dropdown-menu.profile .dropdown-item.active-menu-navbar {
+    color: var(--blue-active-menu-bau);
+    font-weight: 700;
+}
+
+#checkbox-table-bau {
+    float: none;
+    margin-left: 0;
+}
+
+#checkbox-table-bau:checked {
+    background-color: var(--blue-active-menu-bau);
+}
+
+#checkbox-table-bau:disabled {
+    opacity: 1;
+}
+
+#icon-table-bau {
+    font-size: 32px;
+}
+
+#text-action-table-bau {
+    font-size: 12px;
+}
+
+#form-input {
+    min-height: 4.75rem;
+}
+
+#table-bau_length {
+    padding-bottom: 1rem;
+}

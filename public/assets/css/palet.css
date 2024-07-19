@@ -1,0 +1,25 @@
+/*warna dr pubdok*/
+
+:root {
+    --branding-primary-color: #951a2e;
+    --branding-primary-color2: #c4314e;
+    --branding-primary-color3: #d93f57;
+    --branding-primary-color4: #f7a180;
+
+    --branding-secondary-color: #011f4b;
+    --branding-secondary-color2: #03396c;
+    --branding-secondary-color3: #005b96;
+    --branding-secondary-color4: #6497b1;
+    --branding-secondary-color5: #b3cde0;
+
+    --branding-accent-color: #f58020;
+    --branding-accent-color2: #ca2128;
+    --branding-accent-color3: #ec2b26;
+    --branding-accent-color4: #fbac1b;
+    --branding-accent-color5: #ffc837;
+    --branding-accent-color6: #fbe47e;
+
+    --branding-base-color: #fffae6;
+}
+
+/*selesai warna dr pubdok*/

@@ -1,0 +1,133 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SamuelController;
+use App\Http\Controllers\Home\HomeController;
+use App\Http\Controllers\Dashboard\Rapat\AnselController;
+use App\Http\Controllers\Dashboard\Rapat\UmaruController;
+use App\Http\Controllers\Dashboard\Rapat\AbsensiNotulaController;
+use App\Http\Controllers\Dashboard\Profil\ProfilController;
+use App\Http\Controllers\Dashboard\Beranda\BerandaController;
+use App\Http\Controllers\Dashboard\Aspirasi\AspirasiController;
+use App\Http\Controllers\Dashboard\Rapat\JadwalRapatController;
+use App\Http\Controllers\Dashboard\Rapat\DashboardRapatController;
+use App\Http\Controllers\Dashboard\Rapat\MonitoringRapatController;
+use App\Http\Controllers\Dashboard\Perizinan\RiwayatPerizinanController;
+use App\Http\Controllers\Dashboard\Perizinan\KonfirmasiPerizinanController;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/berita', [HomeController::class, 'berita'])->name('home.berita');
+Route::get('/galeri', [HomeController::class, 'galeri'])->name('home.galeri');
+Route::get('/timeline', [HomeController::class, 'timeline'])->name('home.timeline');
+Route::get('/struktur', [HomeController::class, 'struktur'])->name('home.struktur');
+
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [BerandaController::class, 'index'])->name('beranda.index');
+
+    // Profil
+    Route::get('/dashboard/profil', [ProfilController::class, 'edit'])
+        ->name('profil.edit');
+    Route::put('/dashboard/profil', [ProfilController::class, 'update'])->name('profil.update');
+    Route::delete('/dashboard/profil', [ProfilController::class, 'destroy'])->name('profil.destroy');
+
+    // Rapat
+    Route::get('/dashboard/rapat/jadwal', [JadwalRapatController::class, 'index'])->name('jadwal-rapat.index');
+
+    //    note: contoh karena mungkin nanti pake get id rapat
+    Route::get('/dashboard/rapat/jadwal/detail-rapat/{id}', [JadwalRapatController::class, 'detail'])->name('jadwal-rapat.detail');
+    Route::post('/submit-presensi', [AbsensiNotulaController::class, 'submitPresensi'])->name('submit-presensi');
+    Route::post('/update-presensi/{rapat_id}/{mahasiswa_nim}', [AbsensiNotulaController::class, 'update'])->name('update-presensi');
+    Route::post('/update-presensi-dosen/{rapat_id}/{dosen_nip}', [AbsensiNotulaController::class, 'updatePresensiDosen'])->name('update-presensi-dosen');
+
+
+    // route izin
+    Route::get('/dashboard/rapat/jadwal/izin-rapat/{id_rapat}', [JadwalRapatController::class, 'izin'])->name('jadwal-rapat.izin');
+    Route::post('/submit-form', [JadwalRapatController::class, 'submit'])->name('submit-form');
+    Route::get('/jadwal-rapat/fetch', [JadwalRapatController::class, 'fetchRapatData'])->name('jadwal-rapat.fetch');
+    //Route::get('/dashboard/rapat/dashboard', [DashboardRapatController::class, 'index'])->name('dashboard-rapat.index');
+
+    //    note: contoh karena mungkin nanti pake get id rapat
+    //Route::get('/dashboard/rapat/dashboard/notula/contoh', [DashboardRapatController::class, 'notula'])->name('dashboard-rapat.notula');
+
+    // UmaruController
+    Route::get('/dashboard/rapat/dashboard/sunting-rapat/{id_rapat}', [UmaruController::class, 'edit'])->name('dashboard-rapat.edit');
+    Route::patch('/dashboard/rapat/dashboard/sunting-rapat/kirim-form/{id_rapat}', [UmaruController::class, 'update'])->name('dashboard-rapat.update');
+    Route::get('/export/rapat/{id}', [UmaruController::class, 'exportRapat'])->name('export-rapat');
+
+    //Monitoring-Rapat
+    Route::middleware(['can:bph42'])->group(function () {
+        Route::get('/dashboard/rapat/monitoring', [MonitoringRapatController::class, 'index'])->name('monitoring-rapat.index');
+        Route::get('/dashboard/rapat/monitoring/detail-rapat/{id_rapat}', [MonitoringRapatController::class, 'detail'])->name('monitoring-rapat.detail');
+    });
+
+    Route::get('/dashboard/rapat/dashboard/get-risbid-data', [SamuelController::class, "risBid"])->name('getRisbidData');
+    Route::post('/63-d4/dashboard/rapat/dashboard/rapat/seksi-by-risbid', [SamuelController::class, "seksiByRisbid"])->name('seksiByRisbid');
+    Route::post('/63-d4/dashboard/rapat/dashboard/rapat/subksesi-by-seksi', [SamuelController::class, "subseksiBySeksi"])->name('subseksiBySeksi');
+    Route::post('/63-d4/dashboard/rapat/dashboard/rapat/bagian-by-seksi', [SamuelController::class, "bagianSeksi"])->name('bagianSeksi');
+
+    Route::post('/rapat/bagian-by-bagian', [SamuelController::class, "bagianBagian"])->name('bagianBagian');
+
+    Route::post('/dashboard/rapat/dashboard/rapat/tambah-anggota-pasca-pencacahan', [SamuelController::class, "tambahAnggotaPascaPencacahan"])->name('tambahAnggotaPascaPencacahan');
+    Route::post('/dashboard/rapat/dashboard/rapat/tambah-tempat', [AnselController::class, "tambahOptionTempat"])->name('getTempatOptions');
+
+    // Perizinan
+    Route::get('/dashboard/perizinan/riwayat', [RiwayatPerizinanController::class, 'index'])->name('riwayat.index');
+
+    Route::get('/dashboard/perizinan/riwayat/detail/{type}/{id}', [RiwayatPerizinanController::class, 'show'])
+        ->name('riwayat.detail')
+        ->where('type', 'dosen|mahasiswa');
+
+    // Aspirasi
+    Route::get('/dashboard/aspirasi', [AspirasiController::class, 'index'])->name('aspirasi.index');
+    Route::post('/dashboard/aspirasi/store', [AspirasiController::class, 'store'])->name('aspirasi.store');
+    Route::get('/dashboard/aspirasi/kotak-aspirasi', [AspirasiController::class, 'kotak'])->name('aspirasi.kotak-aspirasi');
+});
+
+// Khusus Sekretaris
+Route::middleware(['can:sekretaris'])->group(function () {
+    // Rapat -> Dashboard
+    Route::get('/dashboard/rapat/dashboard', [DashboardRapatController::class, 'index'])->name('dashboard-rapat.index');
+    Route::delete('/dashboard/rapat/dashboard/{id_rapat}/delete', [DashboardRapatController::class, 'deleteRapat'])->name('dashboard-rapat.delete_rapat');
+    Route::get('/dashboard/rapat/dashboard/tambah-rapat', [DashboardRapatController::class, 'create'])->name('dashboard-rapat.create');
+    Route::post('/dashboard/rapat/dashboard/tambah-rapat/kirim-form', [AnselController::class, 'store'])->name('dashboard-rapat.store');
+    Route::get('/get-tempat-options', [AnselController::class, 'tambahOptionTempat'])->name('tambahOptionTempat');
+
+    //Rapat -> kirim jarkom
+    Route::get('/dashboard/rapat/{id}/send-jarkom', [DashboardRapatController::class, 'sendEmailToParticipants'])->name('rapat.send-jarkom');
+
+    // Rapat -> Dashboard -> Detail Rapat
+    Route::get('/dashboard/rapat/dashboard/detail-rapat/{id_rapat}', [DashboardRapatController::class, 'detail'])->name('dashboard-rapat.detail');
+
+    // Rapat -> Dashboard -> Notula Rapat
+    Route::get('/dashboard/rapat/dashboard/notula-rapat/{id_rapat}', [DashboardRapatController::class, 'notula'])->name('dashboard-rapat.notula');
+    Route::post('/dashboard/rapat/dashboard/notula-rapat/{id_rapat}/upload', [DashboardRapatController::class, 'upload_notula'])->name('dashboard-rapat.upload_notula');
+    Route::delete('/dashboard/rapat/dashboard/notula-rapat/{id_rapat}/delete', [DashboardRapatController::class, 'delete_notula'])->name('dashboard-rapat.delete_notula');
+    Route::get('/notula/{id}/show', [DashboardRapatController::class, 'show'])->name('notula.show');
+    Route::get('/notula/{id}/download_notula', [DashboardRapatController::class, 'download_notula'])->name('notula.download_notula');
+
+    Route::post('/sikoko/rapat/akhiri/{id}', [DashboardRapatController::class, 'akhiriRapat'])->name('dashboard-rapat.akhiri_rapat');
+
+    // Perizinan -> Konfirmasi
+    Route::get('/dashboard/perizinan/konfirmasi', [KonfirmasiPerizinanController::class, 'index'])->name('konfirmasi.index');
+    Route::get('/dashboard/perizinan/konfirmasi/diterima/{id}', [KonfirmasiPerizinanController::class, 'status'])->name('konfirmasi.diterima');
+    Route::get('/dashboard/perizinan/konfirmasi/ditolak/{id}', [KonfirmasiPerizinanController::class, 'ditolak'])->name('konfirmasi.ditolak');
+});
+
+
+require __DIR__ . '/auth.php';

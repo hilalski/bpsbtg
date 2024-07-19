@@ -1,0 +1,86 @@
+@php
+    use Illuminate\Support\Str;
+    $currentFullUrl = url()->current();
+@endphp
+
+<div class="pagetitle">
+    @if ($currentFullUrl == route('beranda.index'))
+        <h1>Beranda</h1>
+    @else
+        @if (isset($menu))
+            @php 
+                $menuMatch = false;
+                $submenuMatch = false;
+            @endphp
+            @foreach($menu as $m)
+                @foreach ($m->submenu as $sm)
+                    @foreach ($sm->subsubmenu as $ssm)
+                        @php
+                            $targetUrl = "https://pkl.stis.ac.id/63-d4/dashboard/{$m->url}/{$sm->url}/{$ssm->url}";
+                        @endphp
+                        @if (Str::startsWith($currentFullUrl, $targetUrl))
+                            <h1>{{ $ssm->name }}</h1>
+                            @php $submenuMatch = true; @endphp
+                        @endif
+                    @endforeach
+                    @if (!$submenuMatch)
+                        @php
+                            $targetUrl = "https://pkl.stis.ac.id/63-d4/dashboard/{$m->url}/{$sm->url}";
+                        @endphp
+                        @if (Str::startsWith($currentFullUrl, $targetUrl))
+                            <h1>{{ $sm->name }}</h1>
+                            @php $menuMatch = true; @endphp
+                        @endif
+                    @endif
+                @endforeach
+                @if (!$menuMatch && !$submenuMatch)
+                    @php
+                        $targetUrl = "https://pkl.stis.ac.id/63-d4/dashboard/{$m->url}";
+                    @endphp
+                    @if (Str::startsWith($currentFullUrl, $targetUrl))
+                        <h1>{{ $m->name }}</h1>
+                    @endif
+                @endif
+            @endforeach
+        @endif
+    @endif
+    <nav>
+        <ol id="breadcrumb-web-bau" class="breadcrumb">
+            <li class="breadcrumb-item {{ $currentFullUrl === url("https://pkl.stis.ac.id/63-d4/dashboard") ? 'active' : '' }}">
+                <a href="{{ route('beranda.index') }}">Beranda</a>
+            </li>
+            @if (isset($menu))
+                @foreach($menu as $m)
+                    @php
+                        $menuUrl = "https://pkl.stis.ac.id/63-d4/dashboard/{$m->url}";
+                    @endphp
+                    @if (Str::startsWith($currentFullUrl, $menuUrl))
+                        <li class="breadcrumb-item {{ !count($m->submenu) || !Str::startsWith($currentFullUrl, $menuUrl . '/') ? 'active' : 'pe-none' }}">
+                            <a href="/63-d4/dashboard/{{ $m->url }}">{{ $m->name }}</a>
+                        </li>
+                        @foreach ($m->submenu as $sm)
+                            @php
+                                $submenuUrl = $menuUrl . "/{$sm->url}";
+                            @endphp
+                            @if (Str::startsWith($currentFullUrl, $submenuUrl))
+                                <li class="breadcrumb-item {{ !count($sm->subsubmenu) || !Str::startsWith($currentFullUrl, $submenuUrl . '/') ? 'active' : '' }}">
+                                    <a href="/63-d4/dashboard/{{ $m->url }}/{{ $sm->url }}">{{ $sm->name }}</a>
+                                </li>
+                                @foreach ($sm->subsubmenu as $ssm)
+                                    @php
+                                        $subsubmenuUrl = $submenuUrl . "/{$ssm->url}";
+                                    @endphp
+                                    @if (Str::startsWith($currentFullUrl, $subsubmenuUrl))
+                                        <li class="breadcrumb-item active">
+                                            <a href="/63-d4/dashboard/{{ $m->url }}/{{ $sm->url }}/{{ $ssm->url }}">{{ $ssm->name }}</a>
+                                        </li>
+                                    @endif
+                                @endforeach
+                            @endif
+                        @endforeach
+                    @endif
+                @endforeach
+            @endif
+        </ol>
+    </nav>
+</div>

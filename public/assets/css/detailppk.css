@@ -1,0 +1,10 @@
+.btn-merah {
+    color: #fff;
+    background-color: #dc3545; /* Warna merah dari Bootstrap */
+    border-color: #dc3545; /* Warna border merah */
+  }
+
+  .btn-merah:hover {
+    background-color: #c82333; /* Warna merah yang sedikit lebih gelap saat tombol dihover */
+    border-color: #bd2130; /* Warna border merah yang sedikit lebih gelap saat tombol dihover */
+  }
