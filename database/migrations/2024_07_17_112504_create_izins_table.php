@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('keperluan');
             $table->time('jam_keluar');
             $table->time('jam_kembali')->nullable();
+            $table->time('durasi')->nullable();
             $table->string('keterangan')->nullable();
         });
     }

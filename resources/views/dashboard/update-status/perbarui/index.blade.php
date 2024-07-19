@@ -113,26 +113,51 @@
                     </div>
 
                     <div class="row mb-3">
-                      <label for="inputText" class="col-sm-2 col-form-label"
-                      >Tanggal</label
-                      >
+                      <label for="inputText" class="col-sm-2 col-form-label">Tanggal</label>
                       <div class="col-sm-10">
-                        <input 
-                        type="date" 
-                        name="tanggal" 
-                        id="tanggal" 
-                        class="form-control font-form" 
-                        style="font-size: 16px;"
-                        required/>
+                          <input 
+                              type="date" 
+                              name="tanggal" 
+                              id="tanggal" 
+                              class="form-control font-form" 
+                              style="font-size: 16px;"
+                              readonly
+                              required />
                       </div>
                   </div>
-    
+                  
                   <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        var today = new Date().toISOString().split('T')[0];
-                        document.getElementById('tanggal').setAttribute('min', today);
-                    });
-                </script>
+                      document.addEventListener('DOMContentLoaded', function() {
+                          var today = new Date().toISOString().split('T')[0];
+                          document.getElementById('tanggal').value = today;
+                      });
+                  </script>
+
+                    <div class="row mb-3">
+                      <label for="inputText" class="col-sm-2 col-form-label">Jam Keluar</label>
+                      <div class="col-sm-10">
+                          <input 
+                              type="text" 
+                              name="jam_keluar" 
+                              id="jam_keluar" 
+                              class="form-control font-form" 
+                              style="font-size: 16px;" 
+                              pattern="\d{2}:\d{2}:\d{2}" 
+                              placeholder="HH:MM:SS"
+                              required />
+                      </div>
+                    </div>
+
+                    <script>
+                      document.addEventListener('DOMContentLoaded', function() {
+                          var now = new Date();
+                          var hours = String(now.getHours()).padStart(2, '0');
+                          var minutes = String(now.getMinutes()).padStart(2, '0');
+                          var seconds = String(now.getSeconds()).padStart(2, '0');
+                          var currentTime = hours + ':' + minutes + ':' + seconds;
+                          document.getElementById('jam_keluar').value = currentTime;
+                      });
+                    </script>
                       
     
                       <div class="row mb-3">
@@ -153,20 +178,7 @@
                           </div>
                       </div>
 
-                      <div class="row mb-3">
-                        <label for="inputText" class="col-sm-2 col-form-label"
-                        >Jam Keluar</label
-                        >
-                        <div class="col-sm-10">
-                          <input 
-                          type="time" 
-                          name="jam_keluar" 
-                          id="jam_keluar" 
-                          class="form-control font-form" 
-                          style="font-size: 16px;"
-                          required/>
-                        </div>
-                    </div>
+                      
     
 
                     <div class="row mb-3">

@@ -38,6 +38,7 @@ use App\Http\Controllers\Dashboard\SuratTugas\PersetujuanSuratTugas\DetailPerset
 use App\Http\Controllers\Dashboard\Operator\PegawaiController;
 use App\Http\Controllers\Dashboard\Operator\CekController;
 use App\Http\Controllers\Dashboard\Operator\PengecekanSuratTugasController;
+use App\Http\Controllers\Dashboard\Operator\RiwayatAllController;
 use App\Http\Controllers\Dashboard\Operator\UpdateGajiController;
 
 use App\Http\Controllers\Dashboard\UpdateStatus\PerbaruiStatus\IzinController;
@@ -199,6 +200,7 @@ Route::middleware(['can:operator', 'formatUserName'])->prefix('dashboard')->grou
     Route::get('/operator/pegawai/tambah-pegawai', [PegawaiController::class, 'create'])->name('operator.pegawai.add');
     Route::post('/operator/pegawai/tambah-pegawai', [PegawaiController::class, 'store'])->name('operator.pegawai.store');
     Route::get('/operator/cek-status-pegawai', [CekController::class, 'index'])->name('operator.cek.index');
+    Route::get('/operator/riwayat-status-pegawai', [RiwayatAllController::class, 'index'])->name('operator.riwayat.index');
 
         // Pengecekan Surat Tugas dan Update Gaji
     Route::get('/operator/pengecekan-surtug', [PengecekanSuratTugasController::class, 'index'])->name('pengecekansurtug.index');

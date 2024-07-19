@@ -11,7 +11,7 @@ class Izin extends Model
     protected $table ="izins";
     protected $fillable = [
         'user_id', 'tanggal', 'keperluan', 'jam_keluar',
-        'jam_kembali', 'keterangan'
+        'jam_kembali', 'durasi', 'keterangan'
     ];
 
     protected $guarded = [

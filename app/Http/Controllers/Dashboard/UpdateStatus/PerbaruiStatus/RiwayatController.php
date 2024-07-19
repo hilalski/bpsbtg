@@ -81,22 +81,32 @@ class RiwayatController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        //
         $data1 = $request->all();
 
         $izins = Izin::findOrFail($id);
-        $izins->jam_kembali = $request->jam_kembali; 
+        $izins->jam_kembali = $request->jam_kembali;
+
+        // Calculate duration in PHP if needed
+        $jam_keluar = $izins->jam_keluar;
+        $jam_kembali = $request->jam_kembali;
+
+        if ($jam_keluar && $jam_kembali) {
+            $keluar = \Carbon\Carbon::createFromFormat('H:i:s', $jam_keluar);
+            $kembali = \Carbon\Carbon::createFromFormat('H:i:s', $jam_kembali);
+            $duration = $keluar->diff($kembali)->format('%H:%I:%S');
+            $izins->durasi = $duration;
+        }
+
         $izins->save();
-    
+
         $user = auth()->user();
         if ($user instanceof User) {
             $user->status = $data1['status'];
-        
             $user->save();
         } else {
             return redirect()->route('update-status.riwayat.index')->with('error', 'User tidak valid');
         }
-    
+
         return redirect()->route('update-status.riwayat.index')->with('success', 'Berhasil memperbarui status!');
     }
 
