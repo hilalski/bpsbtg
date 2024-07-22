@@ -64,9 +64,10 @@ class PegawaiController extends Controller
             'email' => 'required|email|unique:users,email',
             'address' => 'nullable',
             'password' => 'required|confirmed',
-            'confirmpassword' => 'required_with:password|same:password',
+            'password_confirmation' => 'required_with:password|same:password',
             'role' => 'required',
-            'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'phone_number' => 'required',
+            //'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'is_kepala_unit' => 'nullable',
             'is_tim_keuangan' => 'nullable',
             'is_unit' => 'nullable',
@@ -75,11 +76,11 @@ class PegawaiController extends Controller
             'is_ppk' => 'nullable',
         ]);
 
-        if ($request->hasFile('picture')) {
-            $filename = $request->file('picture')->hashName();
-            $request->file('picture')->storeAs('profile_pictures', $filename, 'public');
-            $validatedData['picture'] = $filename;
-        }
+        // if ($request->hasFile('picture')) {
+        //     $filename = $request->file('picture')->hashName();
+        //     $request->file('picture')->storeAs('profile_pictures', $filename, 'public');
+        //     $validatedData['picture'] = $filename;
+        // }
 
         if ($request->is_kepala_unit == 'on') {
             $validatedData['is_kepala_unit'] = true;
@@ -125,12 +126,18 @@ class PegawaiController extends Controller
 
         $validatedData['password'] = Hash::make($request->password);
 
-        User::create($validatedData);
+         User::create($validatedData);
 
-        dd($validatedData);
+        //dd($validatedData);
+        // if ($request->has('roles')) {
+        //     foreach ($request->roles as $role) {
+                
+        //         $user->assignRole($role);
+        //     }
+        // }
         
     
-        return redirect()->route('dashboard.operator.pegawai.index')->with('success', 'Pegawai berhasil ditambahkan');
+        return redirect()->route('operator.pegawai.index')->with('success', 'Pegawai berhasil ditambahkan');
     }
 
     /**

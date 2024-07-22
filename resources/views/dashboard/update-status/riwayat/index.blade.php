@@ -74,7 +74,10 @@
                                                     $hours = $minutes = $seconds = 0;
                                                 }
                                             @endphp
-                                            {{ $hours }} jam, {{ $minutes }} menit, dan {{ $seconds }} detik
+
+                                            @if ($izin->jam_kembali !== null)
+                                                {{ $hours }} jam {{ $minutes }} menit
+                                            @endif
                                         </td>
                                         <td class="text-center w-auto align-middle">
                                             <a href="{{ route('update-status.riwayat.show', $izin->id) }}">

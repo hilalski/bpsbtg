@@ -10,6 +10,7 @@
       }
       .readonly-field {
         background-color: #e9e9e9; 
+        font-size: 2rem;
     }
     </style>
 
@@ -94,14 +95,14 @@
                                 <form method="POST" action="{{ route('update-status.riwayat.edit', $izins->id) }}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
-                                        <div class="col-lg-3 col-md-4 label">Jam Kembali</div>
+                                        <div class="col-lg-3 col-md-4 pt-1 label">Jam Kembali</div>
                                         <div class="col-lg-9 col-md-8">
                                             <input 
                                                 type="text" 
                                                 name="jam_kembali" 
                                                 id="jam_kembali" 
-                                                class="form-control font-form readonly-field" 
-                                                style="font-size: 16px;"
+                                                class="form-control readonly-field"
+                                                style="font-size: 1rem;"
                                                 pattern="\d{2}:\d{2}:\d{2}" 
                                                 required
                                                 readonly
@@ -182,7 +183,10 @@
                                           $hours=$minutes=$seconds=0;
                                       }
                                       @endphp
-                                      {{$hours}} jam, {{$minutes}} menit, dan {{$seconds}} detik
+
+                                      @if ($izins->jam_kembali !== null)
+                                        {{$hours}} jam {{$minutes}} menit
+                                      @endif
                                     </div>
                                 </div>
                             @endif

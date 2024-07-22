@@ -33,10 +33,10 @@ class CekStatusChart
         ];
 
         $colors = [
-            '#008000',
-            '#56C2FF',
-            '#FFA500',
-            '#FF0000',
+            '#28a745',
+            '#007bff',
+            '#ffc107',
+            '#dc3545',
 
         ];
 

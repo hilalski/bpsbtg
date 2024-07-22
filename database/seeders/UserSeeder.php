@@ -41,6 +41,7 @@ class UserSeeder extends Seeder
             'is_operator' => true,
             'is_pbj' => true,
             'is_ppk' => true,
+            'is_admin' => true,
             'status' => 'Di Kantor',
         ]);
 
@@ -61,6 +62,7 @@ class UserSeeder extends Seeder
             'is_operator' => true,
             'is_pbj' => true,
             'is_ppk' => true,
+            'is_admin' => true,
             'status' => 'Di Kantor',
         ]);
 

@@ -201,6 +201,8 @@ Route::middleware(['can:operator', 'formatUserName'])->prefix('dashboard')->grou
     Route::post('/operator/pegawai/tambah-pegawai', [PegawaiController::class, 'store'])->name('operator.pegawai.store');
     Route::get('/operator/cek-status-pegawai', [CekController::class, 'index'])->name('operator.cek.index');
     Route::get('/operator/riwayat-status-pegawai', [RiwayatAllController::class, 'index'])->name('operator.riwayat.index');
+    Route::get('/operator/riwayat-status-pegawai/{izins}', [RiwayatAllController::class, 'show'])->name('operator.riwayat.show');
+    Route::get('export-izins', [RiwayatAllController::class, 'export'])->name('izins.export');
 
         // Pengecekan Surat Tugas dan Update Gaji
     Route::get('/operator/pengecekan-surtug', [PengecekanSuratTugasController::class, 'index'])->name('pengecekansurtug.index');

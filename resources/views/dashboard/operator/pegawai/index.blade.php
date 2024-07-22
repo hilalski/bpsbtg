@@ -7,6 +7,13 @@
 
     <section class="section admin-siagau">
         <div class="row">
+            @if (session()->has('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <i class="bi bi-check-circle me-1"></i>
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
@@ -14,14 +21,14 @@
                             Daftar Pegawai
                         </h3>
 
-                        {{-- <div class="d-flex justify-content-end mb-3">
+                        <div class="d-flex justify-content-end mb-3">
                             <a
                                 href={{ route('operator.pegawai.add') }}
-                                class="btn btn-primary me-2 btn-info btn-sm rounded-pill bg-success text-light fw-bold border-0"
+                                class="btn btn-primary me-2 btn-info btn-sm bg-primary text-light fw-bold border-0"
                                 >
                                 + Tambah Pegawai
                             </a>
-                        </div> --}}
+                        </div>
 
                         <table
                             class="table table-hover display responsive nowrap table-striped font-body-table"

@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->bigInteger('gaji');
+            $table->bigInteger('gaji')->nullable();
             $table->string('nip')->unique();
             $table->string('email')->unique();
             $table->string('phone_number')->unique();
@@ -30,7 +30,8 @@ class CreateUsersTable extends Migration
             $table->integer('is_operator')->default(0);
             $table->integer('is_pbj')->default(0);
             $table->integer('is_ppk')->default(0);
-            $table->string('status');
+            $table->integer('is_admin')->default(0);
+            $table->string('status')->default('Di Kantor');
             $table->rememberToken();
         });
     }
