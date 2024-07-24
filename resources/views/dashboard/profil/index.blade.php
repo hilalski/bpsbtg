@@ -40,7 +40,7 @@
                         </button>
                         </li>
 
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                         <button
                             class="nav-link"
                             data-bs-toggle="tab"
@@ -48,7 +48,7 @@
                         >
                             Edit Profile
                         </button>
-                        </li>
+                        </li> --}}
 
                         <li class="nav-item">
                         <button

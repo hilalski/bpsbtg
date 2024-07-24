@@ -29,13 +29,13 @@
 
                             <x-elements.input-password id="inputPassword" name="password" placeholder="Password" />
     
-                            <div class="col-12 d-flex justify-content-between">
+                            {{-- <div class="col-12 d-flex justify-content-between">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
                                     <label class="form-check-label" for="rememberMe">Ingat Saya</label>
                                 </div>
                                 <a href="{{ route('password.request') }}" class="text-decoration-none">Lupa Password?</a>
-                            </div>
+                            </div> --}}
                             <div class="col-12" id="submit-login">
                                 <button class="btn btn-primary w-100" type="submit">Masuk</button>
                             </div>

@@ -63,21 +63,6 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        
-                        {{-- <script>
-                            $(document).ready(function() {
-                                if ($.fn.DataTable.isDataTable('#table-bau')) {
-                                    $('#table-bau').DataTable().destroy();
-                                }
-                        
-                                $('#table-bau').DataTable({
-                                    dom: 'Bfrtip',
-                                    buttons: [
-                                        'copy', 'csv', 'excel', 'pdf', 'print'
-                                    ]
-                                });
-                            });
-                        </script> --}}
                     </div>
                 </div>
             </div>
