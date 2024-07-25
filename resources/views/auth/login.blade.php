@@ -12,20 +12,20 @@
                 <div class="col-xl-5 col-lg-6 col-md-8 d-flex flex-column align-items-center justify-content-center">
                   <div class="d-flex justify-content-center py-4">
                     <span class="logo d-flex align-items-center w-auto">
-                        <img src="{{ asset('assets/img/logo.png') }}" alt="Logo Polstat STIS">
-                        <span class="d-lg-block">SIAGA-U</span>
+                        <img src="{{ asset('assets/img/logo2.png') }}" alt="Logo Polstat STIS">
+                        <span class="d-lg-block">Sistem-3325</span>
                     </span>
                   </div><!-- End Logo -->
                   <div class="card mb-3">
                     <div class="card-body">
                         <div class="pt-4 pb-2">
                             <h5 id="title-login" class="card-title text-center pb-0 fs-4">Masuk</h5>
-                            <p class="text-center small">Masukkan NIP dan Password Anda</p>
+                            <p class="text-center small">Masukkan Username dan Password Anda</p>
                         </div>
     
                         <form class="row g-3 needs-validation" novalidate method="POST" action="{{ route('login') }}">
                             @csrf
-                            <x-elements.input id="inputNip" name="nip" placeholder="NIP" :value="old('nip', $request->nip ?? '')" />
+                            <x-elements.input id="inputNip" name="username" placeholder="Username" :value="old('username', $request->username ?? '')" />
 
                             <x-elements.input-password id="inputPassword" name="password" placeholder="Password" />
     

@@ -2,7 +2,7 @@
 <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
         <a class="navbar-brand d-flex align-items-center" href={{ route('home.index') }}>
-            <img class="logo" src={{ asset('assets/img/favicon.png') }} width="55" height="55" alt="">
+            <img class="logo" src={{ asset('assets/img/logo2.png') }} width="55" height="55" alt="">
             <span class="ml-2 keterangan-logo d-flex flex-column">
             <span><strong>PKL POLSTAT STIS</strong></span>
             <span class="small">T.A. 2023/2024</span>

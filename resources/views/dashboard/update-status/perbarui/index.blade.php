@@ -98,14 +98,14 @@
 
                     <div class="row mb-3">
                         <label for="inputText" class="col-sm-2 col-form-label"
-                        >Unit</label
+                        >NIP</label
                         >
                         <div class="col-sm-10">
                         <input
-                            name="unit"
+                            name="nip"
                             type="text"
                             class="form-control readonly-field"
-                            value="{{ $users->unit }}"
+                            value="{{ $users->nip }}"
                             readonly
                             required
                         />
@@ -119,7 +119,7 @@
                               type="date" 
                               name="tanggal" 
                               id="tanggal" 
-                              class="form-control font-form" 
+                              class="form-control font-form readonly-field" 
                               style="font-size: 16px;"
                               readonly
                               required />
@@ -140,10 +140,11 @@
                               type="text" 
                               name="jam_keluar" 
                               id="jam_keluar" 
-                              class="form-control font-form" 
+                              class="form-control font-form readonly-field" 
                               style="font-size: 16px;" 
                               pattern="\d{2}:\d{2}:\d{2}" 
                               placeholder="HH:MM:SS"
+                              readonly
                               required />
                       </div>
                     </div>

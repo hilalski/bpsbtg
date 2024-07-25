@@ -51,17 +51,17 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="email" class="col-sm-2 col-form-label">Email</label>
+                            <label for="username" class="col-sm-2 col-form-label">Username</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" name="email" id="email" value="{{ old('email') }}" required />
+                                <input type="username" class="form-control" name="username" id="username" value="{{ old('username') }}" required />
                             </div>
                         </div>
-                        <div class="row mb-3">
+                        {{-- <div class="row mb-3">
                             <label for="address" class="col-sm-2 col-form-label">Alamat</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="address" id="address" value="{{ old('address') }}" />
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="row mb-3">
                           <label for="phone_number" class="col-sm-2 col-form-label">Nomor Telepon</label>
                           <div class="col-sm-10">
@@ -81,7 +81,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="role" class="col-sm-2 col-form-label">Jabatan</label>
+                            <label for="role" class="col-sm-2 col-form-label">Role</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="role" id="role">
                                     @foreach ($roles as $role)
@@ -90,7 +90,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="row mb-3">
+                        {{-- <div class="row mb-3">
                             <label for="inputRolePegawai" class="col-sm-2 col-form-label">Role</label>
                             <div class="col-sm-10 d-inline-flex fw-normal">
                                 @foreach ($roles as $role)
@@ -100,7 +100,7 @@
                                     </div>
                                 @endforeach            
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="row mb-3">
                             <div class="text-end">
                                 <button type="button" class="btn btn-danger" onclick="window.location.href='{{route('operator.pegawai.index')}}'">Batal</button>

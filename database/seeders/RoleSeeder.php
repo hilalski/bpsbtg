@@ -16,23 +16,26 @@ class RoleSeeder extends Seeder
     public function run()
     {
         Role::insert([
-            [
-                'name' => 'Unit',
-            ],
-            [
-                'name' => 'Operator',
-            ],
-            [
-                'name' => 'PBJ',
-            ],
-            [
-                'name' => 'PPK',
-            ],
-            [
-                'name' => 'Tim Keuangan',
-            ],
+            // [
+            //     'name' => 'Unit',
+            // ],
+            // [
+            //     'name' => 'Operator',
+            // ],
+            // [
+            //     'name' => 'PBJ',
+            // ],
+            // [
+            //     'name' => 'PPK',
+            // ],
+            // [
+            //     'name' => 'Tim Keuangan',
+            // ],
             [
                 'name' => 'Pimpinan',
+            ],
+            [
+                'name' => 'Admin',
             ],
         ]);
     }

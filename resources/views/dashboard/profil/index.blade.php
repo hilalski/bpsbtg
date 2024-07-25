@@ -78,9 +78,9 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-lg-3 col-md-4 label">Email</div>
+                            <div class="col-lg-3 col-md-4 label">Username</div>
                             <div class="col-lg-9 col-md-8">
-                                {{ auth()->user()->email }}
+                                {{ auth()->user()->username }}
                             </div>
                         </div>
 
@@ -93,12 +93,12 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col-lg-3 col-md-4 label">Alamat</div>
                             <div class="col-lg-9 col-md-8">
                                 {{ auth()->user()->address }}
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="row">
                             <div class="col-lg-3 col-md-4 label">No Telepon</div>

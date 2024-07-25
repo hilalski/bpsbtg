@@ -7,6 +7,7 @@ use App\Models\Menu;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -61,8 +62,8 @@ class PegawaiController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'nip' => 'required|unique:users,nip',
-            'email' => 'required|email|unique:users,email',
-            'address' => 'nullable',
+            'username' => 'required|unique:users,username',
+            // 'address' => 'nullable',
             'password' => 'required|confirmed',
             'password_confirmation' => 'required_with:password|same:password',
             'role' => 'required',
@@ -180,8 +181,21 @@ class PegawaiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($user)
     {
-        //
+        $user = User::findOrFail($user);
+
+        if (!$user) {
+            return response()->json(['message' => 'User tidak ditemukan'], 404);
+        }
+
+        // Delete related records in the users_role table
+        DB::table('users_role')->where('user_id', $user->id)->delete();
+
+        // Now delete the user
+        $user->delete();
+
+        return redirect('/dashboard/operator/pegawai')->with('success', 'User berhasil dihapus');
     }
+
 }

@@ -199,6 +199,7 @@ Route::middleware(['can:operator', 'formatUserName'])->prefix('dashboard')->grou
     Route::get('/operator/pegawai', [PegawaiController::class, 'index'])->name('operator.pegawai.index');
     Route::get('/operator/pegawai/tambah-pegawai', [PegawaiController::class, 'create'])->name('operator.pegawai.add');
     Route::post('/operator/pegawai/tambah-pegawai', [PegawaiController::class, 'store'])->name('operator.pegawai.store');
+    Route::delete('/operator/pegawai/hapus-pegawai/{user}', [PegawaiController::class, 'destroy'])->name('operator.pegawai.destroy');
     Route::get('/operator/cek-status-pegawai', [CekController::class, 'index'])->name('operator.cek.index');
     Route::get('/operator/riwayat-status-pegawai', [RiwayatAllController::class, 'index'])->name('operator.riwayat.index');
     Route::get('/operator/riwayat-status-pegawai/{izins}', [RiwayatAllController::class, 'show'])->name('operator.riwayat.show');

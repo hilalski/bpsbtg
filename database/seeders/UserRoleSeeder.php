@@ -50,25 +50,25 @@ class UserRoleSeeder extends Seeder
                         $this->assignAdditionalRole($user, 'Operator');
                     }
 
-                    if ($user->name == 'Muhammad Zabbar Falihin') {
-                        $this->assignAdditionalRole($user, 'Pimpinan');
-                        $this->assignAdditionalRole($user, 'Tim Keuangan');
-                        $this->assignAdditionalRole($user, 'Unit');
-                        $this->assignAdditionalRole($user, 'Operator');
-                        $this->assignAdditionalRole($user, 'Tim Keuangan');
-                        $this->assignAdditionalRole($user, 'PBJ');
-                        $this->assignAdditionalRole($user, 'PPK');
-                    }
+                    // if ($user->name == 'Muhammad Zabbar Falihin') {
+                    //     $this->assignAdditionalRole($user, 'Pimpinan');
+                    //     $this->assignAdditionalRole($user, 'Tim Keuangan');
+                    //     $this->assignAdditionalRole($user, 'Unit');
+                    //     $this->assignAdditionalRole($user, 'Operator');
+                    //     $this->assignAdditionalRole($user, 'Tim Keuangan');
+                    //     $this->assignAdditionalRole($user, 'PBJ');
+                    //     $this->assignAdditionalRole($user, 'PPK');
+                    // }
 
-                    if ($user->name == 'Gholidho Herda Prilasakly') {
-                        $this->assignAdditionalRole($user, 'Pimpinan');
-                        $this->assignAdditionalRole($user, 'Tim Keuangan');
-                        $this->assignAdditionalRole($user, 'Unit');
-                        $this->assignAdditionalRole($user, 'Operator');
-                        $this->assignAdditionalRole($user, 'Tim Keuangan');
-                        $this->assignAdditionalRole($user, 'PBJ');
-                        $this->assignAdditionalRole($user, 'PPK');
-                    }
+                    // if ($user->name == 'Gholidho Herda Prilasakly') {
+                    //     $this->assignAdditionalRole($user, 'Pimpinan');
+                    //     $this->assignAdditionalRole($user, 'Tim Keuangan');
+                    //     $this->assignAdditionalRole($user, 'Unit');
+                    //     $this->assignAdditionalRole($user, 'Operator');
+                    //     $this->assignAdditionalRole($user, 'Tim Keuangan');
+                    //     $this->assignAdditionalRole($user, 'PBJ');
+                    //     $this->assignAdditionalRole($user, 'PPK');
+                    // }
                 }
             }
         } catch (ModelNotFoundException $e) {

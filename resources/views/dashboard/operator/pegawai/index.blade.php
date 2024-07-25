@@ -39,8 +39,9 @@
                                 <tr>
                                     <th class="text-center col-2">Nama</th>
                                     <th class="text-center col-1">NIP</th>
-                                    <th class="text-center col-1">Email</th>
-                                    <th class="text-center col-1">Kontak</th>
+                                    <th class="text-center col-1">Username</th>
+                                    <th class="text-center col-1">Role</th>
+                                    <th class="text-center col-1">Aksi</th>
                                    
                                 </tr>
                             </thead>
@@ -49,35 +50,19 @@
                                 @foreach ($users as $user)
                                 <tr>
                                     <td class="align-middle fw-bold">{{ $user->name }}</td>
-                                    <td class="text-center align-middle">{{ $user->nip }}</td>
-                                    <td class="align-middle">{{ $user->email }}</td>
-                                    <td class="align-middle">
-                                        <div class="d-flex align-items-center justify-content-center gap-2">
-                                            <button class="btn btn-success">
-                                                <a class="text-decoration-none text-light fw-semibold d-flex align-items-center justify-content-center gap-1"
-                                                href="https://wa.me/{{ $user->phone_number }}" target="_blank">
-                                                    <i class="bi bi-whatsapp"></i>
-                                                    <span id="text-action-table-bau fw-bold">Hubungi</span>
-                                                </a>
-                                            </button>
-                                        </div>
-                                    </td>
-                                    {{-- <td class="align-middle">
-                                        <div class="d-flex align-items-center justify-content-center gap-2">
-                                            <button class="btn btn-info">
-                                                <a class="text-decoration-none text-light fw-semibold d-flex align-items-center justify-content-center gap-1">
-                                                    <i class="bi bi-pencil-square"></i>
-                                                    <span id="text-action-table-bau fw-bold">Edit Role</span>
-                                                </a>
-                                            </button>
-                                            <button class="btn btn-danger">
-                                                <a class="text-decoration-none text-light fw-semibold d-flex align-items-center justify-content-center gap-1">
-                                                    <i class="bi bi-trash-fill"></i>
-                                                    <span id="text-action-table-bau fw-bold">Hapus</span>
-                                                </a>
-                                            </button>
-                                        </div>
-                                    </td> --}}
+                                    <td class="align-middle">{{ $user->nip }}</td>
+                                    <td class="align-middle">{{ $user->username }}</td>
+                                    <td class="align-middle fw-bold">{{ $user->role }}</td>
+                                    <td class="text-center w-auto align-middle">
+                                        <a href="" style="display: inline-block;">
+                                            <button type="button" class="btn btn-info m-1">Edit</button>
+                                        </a>
+                                        <form action="{{ route('operator.pegawai.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin untuk menghapus user tersebut?');" style="display: inline-block;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger m-1">Hapus</button>
+                                        </form>
+                                    </td>                                    
                                 </tr>
                                 @endforeach
                             </tbody>

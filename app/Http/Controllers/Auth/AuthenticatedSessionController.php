@@ -54,7 +54,7 @@ class AuthenticatedSessionController extends Controller
         } catch (Exception $e) {
             // Log pesan error
             Log::error($e->getMessage());
-            return redirect()->back()->with('status.error', 'NIP atau Password tidak valid');
+            return redirect()->back()->with('status.error', 'Username atau Password tidak valid');
         }
     }
 

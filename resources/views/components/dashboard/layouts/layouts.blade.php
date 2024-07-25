@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SIAGA-U | Dashboard</title>
+    <title>Sistem-3325 | Dashboard</title>
 
-    <link href={{ asset('assets/img/favicon.png') }} rel="icon">
+    <link href={{ asset('assets/img/logo2.png') }} rel="icon">
     <!-- CSS Start -->
         <!-- Bootstrap 5.3.2 CSS Start -->
         <link rel="stylesheet" href={{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}>

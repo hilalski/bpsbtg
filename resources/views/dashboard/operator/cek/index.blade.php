@@ -1,5 +1,20 @@
 <x-dashboard.layouts.layouts :menu="$menu">
     <x-slot name="css">
+        <style>
+            .small-button {
+                padding: 4px 8px; 
+                font-size: 12px; 
+            }
+
+            .small-button a {
+                font-size: 12px;
+            }
+
+            .small-button i {
+                font-size: 14px; 
+            }
+
+        </style>
     </x-slot>
 
     <x-slot name="js_head">
@@ -26,8 +41,8 @@
                             <thead class="header-table">
                                 <tr>
                                     <th class="text-center col-1">Nama</th>
-                                    <th class="text-center col-1">Unit Kerja</th>
                                     <th class="text-center col-1">Status</th>
+                                    <th class="text-center col-1">Kontak</th>
                                 </tr>
                             </thead>
 
@@ -35,8 +50,7 @@
                                 @foreach ($users as $user)
                                 <tr>
                                     <td class="align-middle fw-bold">{{ $user->name }}</td>
-                                    <td class="align-middle fw-bold">{{ $user->unit }}</td>
-                                    <td class="align-middle fw-bold">
+                                    <td class="align-middle  text-center fw-bold">
                                         <span class="badge
                                             @if($user->status == 'Di Kantor') bg-success 
                                             @elseif($user->status == 'Dinas') bg-primary 
@@ -45,6 +59,17 @@
                                             @endif">
                                             {{ $user->status }}
                                         </span>
+                                    </td>
+                                    <td class="align-middle">
+                                        
+                                            <button class="btn btn-info small-button align-middle text-center">
+                                                <a class="text-decoration-none text-light fw-semibold d-flex align-items-center justify-content-center gap-1"
+                                                href="https://wa.me/{{ $user->phone_number }}" target="_blank">
+                                                    <i class="bi bi-whatsapp"></i>
+                                                    <span id="text-action-table-bau">Hubungi</span>
+                                                </a>
+                                            </button>
+
                                     </td>
                                 </tr>
                                 @endforeach

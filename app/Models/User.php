@@ -23,21 +23,21 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'nip',
-        'email',
         'password',
-        'unit',
-        'gaji',
+        // 'unit',
+        // 'gaji',
         'phone_number',
         'role',
-        'is_kepala_unit',
-        'is_tim_keuangan',
-        'is_unit',
+        // 'is_kepala_unit',
+        // 'is_tim_keuangan',
+        // 'is_unit',
         'is_operator',
-        'is_pbj',
-        'is_ppk',
+        // 'is_pbj',
+        // 'is_ppk',
         'is_admin',
-        'picture',
+        // 'picture',
         'status'
     ];
 
