@@ -10,7 +10,7 @@
       }
       .readonly-field {
         background-color: #e9e9e9; 
-    }
+      }
     </style>
 
     <section class="section dashboard">

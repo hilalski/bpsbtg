@@ -158,9 +158,20 @@ class PegawaiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        try {
+            $menu = Menu::with('submenu')->get();
+            $roles = Role::all();
+            
+            return view('dashboard.operator.pegawai.edit', [
+                'menu' => $menu,
+                'user' => $user,
+                'roles' => $roles
+            ]);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+        }
     }
 
     /**
@@ -170,9 +181,21 @@ class PegawaiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
         //
+        {
+            $request->validate([
+                'phone_number' => 'required|string|max:16',
+                'role' => 'required|string|exists:roles,name',
+            ]);
+    
+            $user->phone_number = $request->phone_number;
+            $user->role = $request->role;
+            $user->save();
+    
+            return redirect()->route('operator.pegawai.index')->with('success', 'Berhasil memperbarui data Pegawai!');
+        }
     }
 
     /**

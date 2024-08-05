@@ -54,7 +54,7 @@
                                     <td class="align-middle">{{ $user->username }}</td>
                                     <td class="align-middle fw-bold">{{ $user->role }}</td>
                                     <td class="text-center w-auto align-middle">
-                                        <a href="" style="display: inline-block;">
+                                        <a href="{{ route('operator.pegawai.edit', $user->id) }}" style="display: inline-block;">
                                             <button type="button" class="btn btn-info m-1">Edit</button>
                                         </a>
                                         <form action="{{ route('operator.pegawai.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin untuk menghapus user tersebut?');" style="display: inline-block;">

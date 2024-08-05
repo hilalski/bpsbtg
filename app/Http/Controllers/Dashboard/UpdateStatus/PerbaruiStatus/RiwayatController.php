@@ -84,11 +84,32 @@ class RiwayatController extends Controller
         $data1 = $request->all();
 
         $izins = Izin::findOrFail($id);
-        $izins->jam_kembali = $request->jam_kembali;
+        // $izins->jam_kembali = $request->jam_kembali;
 
-        // Calculate duration in PHP if needed
+        // // Calculate duration in PHP if needed
         $jam_keluar = $izins->jam_keluar;
         $jam_kembali = $request->jam_kembali;
+
+        
+        $jam_kembali = $request->input('jam_kembali');
+        $jam_keluar = $izins->jam_keluar;
+    
+        if (!$jam_kembali) {
+            $currentTime = \Carbon\Carbon::now();
+            
+            if ($currentTime->isSameDay(\Carbon\Carbon::createFromFormat('H:i:s', $jam_keluar))) {
+                // If it's the same day as jam_keluar
+                if ($currentTime->hour >= 16) {
+                    $jam_kembali = '16:00:00';
+                } else {
+                    $jam_kembali = $currentTime->format('H:i:s');
+                }
+            } else {
+                // If it's not the same day as jam_keluar
+                $jam_kembali = '16:00:00';
+            }
+        }
+        $izins->jam_kembali = $jam_kembali;
 
         if ($jam_keluar && $jam_kembali) {
             $keluar = \Carbon\Carbon::createFromFormat('H:i:s', $jam_keluar);
