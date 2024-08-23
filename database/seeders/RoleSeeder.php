@@ -19,9 +19,9 @@ class RoleSeeder extends Seeder
             // [
             //     'name' => 'Unit',
             // ],
-            // [
-            //     'name' => 'Operator',
-            // ],
+            [
+                'name' => 'Operator',
+            ],
             // [
             //     'name' => 'PBJ',
             // ],
@@ -34,9 +34,9 @@ class RoleSeeder extends Seeder
             [
                 'name' => 'Pimpinan',
             ],
-            [
-                'name' => 'Admin',
-            ],
+            // [
+            //     'name' => 'Admin',
+            // ],
         ]);
     }
 }

@@ -34,8 +34,8 @@
                             name="name"
                             value="{{ $user->name }}"
                             type="text"
-                            class="form-control readonly-field"
-                            readonly
+                            class="form-control"
+                            placeholder="Masukkan Nama dan Gelar Terbaru"
                         />
                         </div>
                     </div>

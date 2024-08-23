@@ -73,10 +73,10 @@
                     <div class="col-lg-12">
                       <div class="card">
                         <div class="card-body">
-                          <h5 class="card-title">Tentang Sistem X</h5>
-                          <strong>Sistem X</strong> merupakan quas omnis officia. Sit sed praesentium voluptas. Corrupti inventore consequatur nisi necessitatibus modi consequuntur soluta id. Enim autem est esse natus assumenda. Non sunt dignissimos officiis expedita. Consequatur sint repellendus voluptas.
-                          Quidem sit est nulla ullam. Suscipit debitis ullam iusto dolorem animi dolorem numquam. Enim fuga ipsum dolor nulla quia ut.
-                          Rerum dolor voluptatem et deleniti libero totam numquam nobis distinctio. Sit sint aut. Consequatur rerum in.
+                          <h5 class="card-title">Tentang Sistem-3325</h5>
+                          <strong>Sistem-3325</strong> merupakan aplikasi untuk memantau keberadaan pegawai BPS Kabupaten Batang. 
+                          Pegawai diharuskan untuk mengisikan perizinan keluar kantor apabila hendak meninggalkan kantor untuk melakukan perjalanan dinas, non dinas, ataupun istirahat. <br>
+                          Selanjutnya, Pegawai juga diharuskan untuk mengisikan formulir kembali sebagai tanda bahwa pegawai telah selesai melakukan perizinan keluar kantor.
                         </div>
                       </div>
                     </div>
@@ -94,36 +94,65 @@
                               <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
                                   <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Pertanyaan #1
+                                    Apa saja yang termasuk Perjalanan Dinas?
                                   </button>
                                 </h2>
                                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                   <div class="accordion-body">
-                                    <strong>Jawaban #1.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                    <strong>Perjalanan Dinas</strong> adalah perjalanan yang melewati batas Kota dan/atau dalam Kota dari tempat kedudukan ke tempat yang dituju, melaksanakan tugas, dan kembali ke tempat kedudukan semula di dalam negeri 
+                                    termasuk pengawasan lapangan, menghadiri undangan instansi lain, dan kegiatan lain yang diakomodir dalam <a href="https://drive.google.com/file/d/1WNvpjwS1vY6b37Qrfy_HoCyAn-J3E2IS/view" target="_blank"><strong>Peraturan Kepala Badan Pusat Statistik Nomor 103 Tahun 2014</strong>.</a>
                                   </div>
                                 </div>
                               </div>
                               <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingTwo">
                                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Pertanyaan #2
+                                    Apa saja yang termasuk Perjalanan Non Dinas?
                                   </button>
                                 </h2>
                                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                   <div class="accordion-body">
-                                    <strong>Jawaban #2.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                    <strong>Perjalanan Non Dinas</strong> adalah perjalanan yang tidak terkait langsung dengan tugas atau pekerjaan resmi. Contoh perjalanan non dinas termasuk perjalanan pribadi seperti izin menjemput anak, dan kegiatan lainnya yang tidak berhubungan dengan pekerjaan.
                                   </div>
                                 </div>
                               </div>
                               <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingThree">
                                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Pertanyaan #3
+                                    Kapan Waktu Istirahat Bagi Pegawai BPS Kabupaten Batang?
                                   </button>
                                 </h2>
                                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                   <div class="accordion-body">
-                                    <strong>Jawaban #3.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                    <strong>Waktu Istirahat:</strong> <br>
+                                    <ul>
+                                      <li>Hari Senin - Kamis	: 12.00 - 13.00 WIB</li>
+                                      <li>Hari Jumat 		: 11.30 - 13.00 WIB</li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingFour">
+                                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Bagaimana Jika Saya Lupa Mengisikan Jam Kembali?
+                                  </button>
+                                </h2>
+                                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                                  <div class="accordion-body">
+                                    <strong>Jika lupa mengisikan jam kembali, </strong> Anda dapat mengisikan jam kembali kapan saja, tetapi jam kembali akan tercatat berisi jam 16.00 pada hari di mana anda lupa mengisi jam kembali.
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingFive">
+                                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    Pertanyaan #5
+                                  </button>
+                                </h2>
+                                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                                  <div class="accordion-body">
+                                    <strong>Jawaban #5.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
                                   </div>
                                 </div>
                               </div>

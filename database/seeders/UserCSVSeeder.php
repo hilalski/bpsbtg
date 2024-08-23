@@ -49,8 +49,8 @@ class UserCSVSeeder extends Seeder
                 'is_operator' => $row[7],
                 // 'is_pbj' => $row[13],
                 // 'is_ppk' => $row[14],
-                'is_admin' => $row[8],
-                'status' => $row[9]
+                // 'is_admin' => $row[8],
+                'status' => $row[8]
             ]);
         }
 

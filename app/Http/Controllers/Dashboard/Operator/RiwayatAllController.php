@@ -6,6 +6,7 @@ use App\Models\Izin;
 use App\Models\Menu;
 use App\Models\User;
 use App\Exports\IzinsExport;
+use App\Exports\IzinsExportRange;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
@@ -78,12 +79,35 @@ class RiwayatAllController extends Controller
 
     public function export(Request $request) 
     {
-        $bulan = $request->input('bulan');
-        Carbon::setLocale('id');
-        $bulanNama = Carbon::createFromFormat('m', $bulan)->translatedFormat('F');
-        $fileName = 'Rekap Status Pegawai - ' . $bulanNama . '.xlsx';
+        // Validasi input tanggal
+        $request->validate([
+            'tanggal_awal' => 'required|date',
+            'tanggal_akhir' => 'required|date|after_or_equal:tanggal_awal',
+        ], [
+            'tanggal_akhir.after_or_equal' => 'Tanggal akhir tidak boleh kurang dari tanggal awal.',
+        ]);
 
-        return Excel::download(new IzinsExport($bulan), $fileName);
+        $bulan = $request->input('bulan');
+        $tanggalAwal = $request->input('tanggal_awal');
+        $tanggalAkhir = $request->input('tanggal_akhir');
+
+        Carbon::setLocale('id');
+
+        if ($bulan) {
+            $bulanNama = Carbon::createFromFormat('m', $bulan)->translatedFormat('F');
+            $fileName = 'Rekap Status Pegawai - ' . $bulanNama . '.xlsx';
+
+            return Excel::download(new IzinsExport($bulan), $fileName);
+        } elseif ($tanggalAwal && $tanggalAkhir) {
+            $tanggalAwalFormatted = Carbon::parse($tanggalAwal)->translatedFormat('d F Y');
+            $tanggalAkhirFormatted = Carbon::parse($tanggalAkhir)->translatedFormat('d F Y');
+            
+            $fileName = 'Rekap Status Pegawai - ' . $tanggalAwalFormatted . ' sampai ' . $tanggalAkhirFormatted . '.xlsx';
+
+            return Excel::download(new IzinsExportRange($tanggalAwal, $tanggalAkhir), $fileName);
+        } else {
+            return back()->with('error', 'Silakan pilih bulan atau rentang tanggal untuk ekspor data.');
+        }
     }
 
     /**

@@ -56,12 +56,6 @@
                                 <input type="username" class="form-control" name="username" id="username" value="{{ old('username') }}" required />
                             </div>
                         </div>
-                        {{-- <div class="row mb-3">
-                            <label for="address" class="col-sm-2 col-form-label">Alamat</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name="address" id="address" value="{{ old('address') }}" />
-                            </div>
-                        </div> --}}
                         <div class="row mb-3">
                           <label for="phone_number" class="col-sm-2 col-form-label">Nomor Telepon</label>
                           <div class="col-sm-10">

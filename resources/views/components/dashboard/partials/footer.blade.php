@@ -1,8 +1,8 @@
 <footer id="footer-dashboard-siagau">
     <div class="footer-copyright text-center py-3 px-3 fw-bold">
         <span class="font-italic">Dibuat dengan Penuh Cinta <i class="bi bi-heart-fill"></i></span><br>
-        <span class="">Copyright © 2024 Tim Magang Politeknik Statistika STIS x </span>
-        <span class="">BPS Kabupaten Batang</span>
+        <span class="">Copyright © 2024 Tim Magang Politeknik Statistika STIS</span>
+        {{-- <span class="">BPS Kabupaten Batang</span> --}}
     </div>
     <!-- Copyright -->
 </footer>

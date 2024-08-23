@@ -59,7 +59,11 @@
                               class="tab-pane fade show active profile-overview"
                               id="profile-overview"
                             >
-                              <h5 class="card-title">Silakan Perbarui Informasi Status Anda</h5>
+                              @if ($izins->jam_kembali === null)
+                                <h5 class="card-title">Silakan Perbarui Informasi Status Anda</h5>
+                              @else
+                                <h5 class="card-title">Informasi Status Anda</h5>
+                              @endif
 
                               <div class="row">
                                 <div class="col-lg-3 col-md-4 label">Hari, Tanggal</div>
@@ -92,78 +96,48 @@
                                 <div class="col-lg-9 col-md-8">{{ $izins->jam_keluar }}</div>
                               </div>
                               @if ($izins->jam_kembali === null)
-                                <form method="POST" action="{{ route('update-status.riwayat.edit', $izins->id) }}" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="row">
-                                        <div class="col-lg-3 col-md-4 pt-1 label">Jam Kembali</div>
-                                        <div class="col-lg-9 col-md-8">
-                                            <input 
-                                                type="text" 
-                                                name="jam_kembali" 
-                                                id="jam_kembali" 
-                                                class="form-control readonly-field"
-                                                style="font-size: 1rem;"
-                                                pattern="\d{2}:\d{2}:\d{2}" 
-                                                required
-                                                readonly
-                                            />
-                                        </div>
-
-                                        <input
-                                            type="hidden"
-                                            id="durasi"
-                                            class="form-control"
-                                            value=""
+                              <form method="POST" action="{{ route('update-status.riwayat.edit', $izins->id) }}" enctype="multipart/form-data">
+                                @csrf
+                                <div class="row">
+                                    {{-- <div class="col-lg-3 col-md-4 pt-1 label">Jam Kembali</div> --}}
+                                    <div class="col-lg-9 col-md-8">
+                                        <input 
+                                            type="hidden" 
+                                            name="jam_kembali" 
+                                            id="jam_kembali" 
+                                            class="form-control readonly-field"
+                                            style="font-size: 1rem;"
+                                            pattern="\d{2}:\d{2}:\d{2}" 
+                                            required
                                             readonly
-                                            name="durasi"
                                         />
-
-                                        <input
-                                            type="hidden"
-                                            id="status"
-                                            class="form-control"
-                                            value="Di Kantor"
-                                            readonly
-                                            name="status"
-                                        />
-
                                     </div>
-                                    <div class="d-flex justify-content-center py-3">
-                                        <div class="col-4 d-flex justify-content-center">
-                                            <button type="submit" class="btn btn-primary float-right">Submit</button>
-                                        </div>
+                            
+                                    <input
+                                        type="hidden"
+                                        id="durasi"
+                                        class="form-control"
+                                        value=""
+                                        readonly
+                                        name="durasi"
+                                    />
+                            
+                                    <input
+                                        type="hidden"
+                                        id="status"
+                                        class="form-control"
+                                        value="Di Kantor"
+                                        readonly
+                                        name="status"
+                                    />
+                                </div>
+                                <div class="d-flex justify-content-center py-3">
+                                    <div class="col-4 d-flex justify-content-center">
+                                        <button type="submit" class="btn btn-success float-right">Kembali ke Kantor</button>
                                     </div>
-                                </form>
-
-                                <script>
-                                  document.addEventListener('DOMContentLoaded', function() {
-                                      var now = new Date();
-                                      var hours = String(now.getHours()).padStart(2, '0');
-                                      var minutes = String(now.getMinutes()).padStart(2, '0');
-                                      var seconds = String(now.getSeconds()).padStart(2, '0');
-                                      var currentTime = hours + ':' + minutes + ':' + seconds;
-                                      document.getElementById('jam_kembali').value = currentTime;
-                              
-                                      var jamKeluar = "{{ $izins->jam_keluar }}"; // Ambil nilai jam_keluar dari database
-                                      if (jamKeluar) {
-                                          var jamKembali = currentTime;
-                              
-                                          var [keluarHours, keluarMinutes, keluarSeconds] = jamKeluar.split(':').map(Number);
-                                          var [kembaliHours, kembaliMinutes, kembaliSeconds] = jamKembali.split(':').map(Number);
-                              
-                                          var keluarTotalSeconds = keluarHours * 3600 + keluarMinutes * 60 + keluarSeconds;
-                                          var kembaliTotalSeconds = kembaliHours * 3600 + kembaliMinutes * 60 + kembaliSeconds;
-                              
-                                          var durationSeconds = kembaliTotalSeconds - keluarTotalSeconds;
-                                          var durationHours = Math.floor(durationSeconds / 3600);
-                                          var durationRemainderMinutes = Math.floor((durationSeconds % 3600) / 60);
-                                          var durationRemainderSeconds = durationSeconds % 60;
-                              
-                                          var durationFormatted = String(durationHours).padStart(2, '0') + ':' + String(durationRemainderMinutes).padStart(2, '0') + ':' + String(durationRemainderSeconds).padStart(2, '0');
-                                          document.getElementById('durasi').value = durationFormatted;
-                                      }
-                                  });
-                              </script>
+                                </div>
+                            </form>
+                            
                             @else
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Jam Kembali</div>

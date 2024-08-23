@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             // $table->bigInteger('gaji')->nullable();
             $table->string('username')->unique();
             $table->string('nip')->unique();
-            $table->string('phone_number')->unique();
+            $table->string('phone_number');
             // $table->string('unit')->nullable();
             // $table->string('picture')->nullable();
             $table->string('role')->nullable();
@@ -30,7 +30,7 @@ class CreateUsersTable extends Migration
             $table->integer('is_operator')->default(0);
             // $table->integer('is_pbj')->default(0);
             // $table->integer('is_ppk')->default(0);
-            $table->integer('is_admin')->default(0);
+            // $table->integer('is_admin')->default(0);
             $table->string('status')->default('Di Kantor');
             $table->rememberToken();
         });

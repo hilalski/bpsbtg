@@ -52,7 +52,9 @@
                                     <td class="align-middle fw-bold">{{ $user->name }}</td>
                                     <td class="align-middle">{{ $user->nip }}</td>
                                     <td class="align-middle">{{ $user->username }}</td>
-                                    <td class="align-middle fw-bold">{{ $user->role }}</td>
+                                    <td class="align-middle fw-bold">
+                                        {{ $user->roles->pluck('name')->implode(', ') }}
+                                    </td>
                                     <td class="text-center w-auto align-middle">
                                         <a href="{{ route('operator.pegawai.edit', $user->id) }}" style="display: inline-block;">
                                             <button type="button" class="btn btn-info m-1">Edit</button>

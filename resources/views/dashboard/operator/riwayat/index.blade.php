@@ -78,13 +78,34 @@
                             
                         <div class="row">
                             <form action="{{ route('izins.export') }}" method="GET">
-                                <div class="form-group">
-                                    <label for="bulan">Silakan pilih bulan dasar untuk ekspor data</label>
+                                {{-- <div class="form-group">
+                                    <label for="bulan">Silakan pilih bulan dasar untuk ekspor data: </label>
                                     <select name="bulan" id="bulan" class="form-control p-2 mt-3 mb-3">
+                                        <option value="" selected disabled>Pilih bulan</option> <!-- Opsi kosong -->
                                         @for ($i = 1; $i <= 12; $i++)
                                             <option value="{{ $i }}">{{ \Carbon\Carbon::createFromFormat('m', $i)->translatedFormat('F') }}</option>
                                         @endfor
                                     </select>
+                                </div> --}}
+                                <h7 class="text-center fw-bold mb-4">Masukkan Rentang Periode: </h7>
+
+                                <!-- Pilihan untuk ekspor berdasarkan rentang tanggal -->
+                                <div class="form-group mt-3">
+                                    {{-- <p class="">Masukkan rentang periode: </p> --}}
+                                    <div class="row mb-3">
+                                        <label for="tanggal_awal" class="col-sm-2 col-form-label">Tanggal Awal: </label>
+                                        <div class="col-sm-4">
+                                            <input type="date" class="form-control" name="tanggal_awal" id="tanggal_awal" value="{{ old('tanggal_awal') }}" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="tanggal_akhir" class="col-sm-2 col-form-label">Tanggal Akhir: </label>
+                                        <div class="col-sm-4">
+                                            <input type="date" class="form-control" name="tanggal_akhir" id="tanggal_akhir" value="{{ old('tanggal_akhir') }}" />
+                                        </div>
+                                    </div>
+                    
                                 </div>
                                 <button type="submit" class="btn btn-info">Ekspor ke Excel</button>
                             </form>
@@ -93,6 +114,8 @@
                 </div>
             </div>
         </div>
+
+        
     </section>
 
     {{-- <x-slot name="js_body">

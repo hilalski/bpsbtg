@@ -36,7 +36,7 @@ class User extends Authenticatable
         'is_operator',
         // 'is_pbj',
         // 'is_ppk',
-        'is_admin',
+        // 'is_admin',
         // 'picture',
         'status'
     ];

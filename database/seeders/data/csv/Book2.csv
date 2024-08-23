@@ -1,36 +1,35 @@
-﻿id;name;username;nip;phone_number;role;password;is_operator;is_admin;status
-1;Agus Sujarwo;agussujarwo;197511202007011003;6285810817959;Pegawai;password;0;0;Di Kantor
-2;Akmal Setiawan, SST, M.T;akmalsetiawan;198008082002121007;6281973556878;Pegawai;password;0;0;Di Kantor
-3;Ali Abrori, S. Si;aliabrori;197207241994121001;6282314809831;Pegawai;password;0;0;Di Kantor
-4;Amat Tohirin, S.Sos;amattohirin;198103252011011012;6281226228877;Pegawai;password;0;0;Di Kantor
-5;Anggi Anggraeni, A.Md;anggianggraeni;198705312009022003;6282324538515;Pegawai;password;0;0;Di Kantor
-6;Anis Yuliastuti, SST;anisyuliastuti;198801152008012001;6285640300636;Pegawai;password;0;0;Di Kantor
-7;Arief Budiman, A.Md.;ariefbudiman;197808072001121002;6285803433788;Pegawai;password;0;0;Di Kantor
-8;Ayu Tiara Ashar Putri, S.Tr.Stat.;ayutiara;199712032019122001;6281548325361;Pegawai;password;0;0;Di Kantor
-9;Cahya Rini, A.Md;cahyarini;197602031998032001;6282272272087;Pegawai;password;0;0;Di Kantor
-10;Cahya Wisnu Wardana, SST;cahyawisnu;198106142003121003;6281389143940;Pegawai;password;0;0;Di Kantor
-11;Ciswo Rejo, SE;cisworejo;197103141994021002;6285200952723;Pegawai;password;0;0;Di Kantor
-12;Diana Widiyastuti, A. Md;dianawidiyastuti;197509032006042022;6285795091831;Pegawai;password;0;0;Di Kantor
-13;Dwi Jatmi;dwijatmi;198010172006042003;6285602588001;Pegawai;password;0;0;Di Kantor
-14;Edi Margono;edimargono;196807112007101001;6285226087744;Pegawai;password;0;0;Di Kantor
-15;Een Qurotul Aeni, S.Si, M. Si;eenqurotul;197401161996122001;628156926009;Pegawai;password;0;0;Di Kantor
-16;Gilang Alip Utama, SST, M.Ec.Dev;gilangalip;199101112013111001;6285641908727;Pegawai;password;0;0;Di Kantor
-17;Grace Ermawaty, A.Md;graceermawaty;198806042010032001;6282149936030;Pegawai;password;0;0;Di Kantor
-18;Heni Djumadi, S. ST;henidjumadi;197105071993121001;628122797078;Pimpinan;password;1;1;Di Kantor
-19;Hepy Savitayanto;hepysavitayanto;197702172006041019;6285201124388;Pegawai;password;0;0;Di Kantor
-20;Irawan Rizki Prasetya, SST;irawanrizki;199311282017011001;6282253013859;Pegawai;password;0;0;Di Kantor
-21;Lusi Noviana;lusinoviana;197511202009012002;6281215178960;Pegawai;password;0;0;Di Kantor
-22;Moch. Choeril Anwar, SST., M. Si;mochchoeril;198512132009021004;6285286888040;Pegawai;password;0;0;Di Kantor
-23;Much Khafidhin;muchkhafidhin;197310292001121001;6285290316721;Pegawai;password;0;0;Di Kantor
-24;Mustofa, SST;mustofa;197305251994031004;6281326825733;Pegawai;password;0;0;Di Kantor
-25;Purwanto, SST;purwanto;197410241996121001;628813764626;Pegawai;password;0;0;Di Kantor
-26;Rakhmat Setiawan, SE;rakhmatsetiawan;197304022002121003;6282300034155;Pegawai;password;0;0;Di Kantor
-27;Ria Dwi Agustin, SST;riadwi;199108192014102001;6285710357463;Pegawai;password;0;0;Di Kantor
-28;Setiawan Budi Santoso, SST;setiawanbudi;197605101999031004;6282326165707;Pegawai;password;0;0;Di Kantor
-29;Sri Winarsih, S.Si, M.Ec.Dev;sriwinarsih;197404251996122001;6285216218590;Pegawai;password;0;0;Di Kantor
-30;Suharyanti;suharyanti;197807312006042024;6285740391086;Pegawai;password;0;0;Di Kantor
-31;Teguh Hartomo Ardi;teguhhartomo;198004182007011001;6282329222303;Pegawai;password;0;0;Di Kantor
-32;Tira Prasetiawan, S.P.;tiraprasetiawan;198710202011011008;6285747863808;Pegawai;password;0;0;Di Kantor
-33;Tri Handoko;trihandoko;198208032009111001;6285742662048;Pegawai;password;0;0;Di Kantor
-34;Veronika Ratih Andriani, SST;veronikaratih;199004052013112001;6285640710773;Pegawai;password;0;0;Di Kantor
-35;Admin;admin;123456789;1;Admin;pasword;1;1;Di Kantor
+﻿id;name;username;nip;phone_number;role;password;is_operator;status
+1;Agus Sujarwo;agussujarwo;197511202007011000;6285810817959;Pegawai;password;0;Di Kantor
+2;Akmal Setiawan, SST, M.T;akmalsetiawan;198008082002121000;6281973556878;Pegawai;password;0;Di Kantor
+3;Ali Abrori, S. Si;aliabrori;197207241994121000;6282314809831;Pegawai;password;1;Di Kantor
+4;Amat Tohirin, S.Sos;amattohirin;198103252011011000;6281226228877;Pegawai;password;0;Di Kantor
+5;Anggi Anggraeni, A.Md;anggianggraeni;198705312009022000;6282324538515;Pegawai;password;0;Di Kantor
+6;Anis Yuliastuti, SST;anisyuliastuti;198801152008012000;6285640300636;Pegawai;password;0;Di Kantor
+7;Arief Budiman, A.Md.;ariefbudiman;197808072001121000;6285803433788;Pegawai;password;0;Di Kantor
+8;Ayu Tiara Ashar Putri, S.Tr.Stat.;ayutiara;199712032019122000;6281548325361;Pegawai;password;0;Di Kantor
+9;Cahya Rini, A.Md;cahyarini;197602031998032000;6282272272087;Pegawai;password;0;Di Kantor
+10;Cahya Wisnu Wardana, SST;cahyawisnu;198106142003121000;6281389143940;Pegawai;password;0;Di Kantor
+11;Ciswo Rejo, SE;cisworejo;197103141994021000;6285200952723;Pegawai;password;0;Di Kantor
+12;Diana Widiyastuti, A. Md;dianawidiyastuti;197509032006042000;6285795091831;Pegawai;password;0;Di Kantor
+13;Dwi Jatmi;dwijatmi;198010172006042000;6285602588001;Pegawai;password;0;Di Kantor
+14;Edi Margono;edimargono;196807112007101000;6285226087744;Pegawai;password;0;Di Kantor
+15;Een Qurotul Aeni, S.Si, M. Si;eenqurotul;197401161996122000;628156926009;Pegawai;password;0;Di Kantor
+16;Gilang Alip Utama, SST, M.Ec.Dev;gilangalip;199101112013111000;6285641908727;Pegawai;password;0;Di Kantor
+17;Grace Ermawaty, A.Md;graceermawaty;198806042010032000;6282149936030;Pegawai;password;0;Di Kantor
+18;Heni Djumadi, S. ST;henidjumadi;197105071993121000;628122797078;Pimpinan;password;1;Di Kantor
+19;Hepy Savitayanto;hepysavitayanto;197702172006041000;6285201124388;Pegawai;password;0;Di Kantor
+20;Irawan Rizki Prasetya, SST;irawanrizki;199311282017011000;6282253013859;Pegawai;password;0;Di Kantor
+21;Lusi Noviana;lusinoviana;197511202009012000;6281215178960;Pegawai;password;0;Di Kantor
+22;Moch. Choeril Anwar, SST., M. Si;mochchoeril;198512132009021000;6285286888040;Pegawai;password;0;Di Kantor
+23;Much Khafidhin;muchkhafidhin;197310292001121000;6285290316721;Pegawai;password;0;Di Kantor
+24;Mustofa, SST;mustofa;197305251994031000;6281326825733;Pegawai;password;0;Di Kantor
+25;Purwanto, SST;purwanto;197410241996121000;628813764626;Pegawai;password;0;Di Kantor
+26;Rakhmat Setiawan, SE;rakhmatsetiawan;197304022002121000;6282300034155;Pegawai;password;0;Di Kantor
+27;Ria Dwi Agustin, SST;riadwi;199108192014102000;6285710357463;Pegawai;password;0;Di Kantor
+28;Setiawan Budi Santoso, SST;setiawanbudi;197605101999031000;6282326165707;Pegawai;password;0;Di Kantor
+29;Sri Winarsih, S.Si, M.Ec.Dev;sriwinarsih;197404251996122000;6285216218590;Pegawai;password;0;Di Kantor
+30;Suharyanti;suharyanti;197807312006042000;6285740391086;Pegawai;password;0;Di Kantor
+31;Teguh Hartomo Ardi;teguhhartomo;198004182007011000;6282329222303;Pegawai;password;0;Di Kantor
+32;Tira Prasetiawan, S.P.;tiraprasetiawan;198710202011011000;6285747863808;Pegawai;password;0;Di Kantor
+33;Tri Handoko;trihandoko;198208032009111000;6285742662048;Pegawai;password;0;Di Kantor
+34;Veronika Ratih Andriani, SST;veronikaratih;199004052013112000;6285640710773;Pegawai;password;0;Di Kantor

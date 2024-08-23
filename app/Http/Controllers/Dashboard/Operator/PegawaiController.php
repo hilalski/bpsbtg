@@ -25,10 +25,12 @@ class PegawaiController extends Controller
         $menu = Menu::with('submenu')->get();
         
         $users = User::all();
+        $roles = Role::all();
     
         return view('dashboard.operator.pegawai.index', [
             'menu' => $menu,
             'users' => $users,
+            'roles' => $roles,
         ]);
     }    
 
@@ -58,88 +60,31 @@ class PegawaiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'nip' => 'required|unique:users,nip',
-            'username' => 'required|unique:users,username',
-            // 'address' => 'nullable',
-            'password' => 'required|confirmed',
-            'password_confirmation' => 'required_with:password|same:password',
-            'role' => 'required',
-            'phone_number' => 'required',
-            //'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'is_kepala_unit' => 'nullable',
-            'is_tim_keuangan' => 'nullable',
-            'is_unit' => 'nullable',
-            'is_operator' => 'nullable',
-            'is_pbj' => 'nullable',
-            'is_ppk' => 'nullable',
-        ]);
+{
+    $validatedData = $request->validate([
+        'name' => 'required|max:255',
+        'nip' => 'required|unique:users,nip',
+        'username' => 'required|unique:users,username',
+        'password' => 'required|confirmed',
+        'password_confirmation' => 'required_with:password|same:password',
+        'role' => 'required',
+        'phone_number' => 'required',
+    ]);
 
-        // if ($request->hasFile('picture')) {
-        //     $filename = $request->file('picture')->hashName();
-        //     $request->file('picture')->storeAs('profile_pictures', $filename, 'public');
-        //     $validatedData['picture'] = $filename;
-        // }
+    $validatedData['password'] = Hash::make($request->password);
 
-        if ($request->is_kepala_unit == 'on') {
-            $validatedData['is_kepala_unit'] = true;
-        } else {
-            $validatedData['is_kepala_unit'] = false;
-        }
-    
-        if ($request->is_tim_keuangan == 'on') {
-            $validatedData['is_tim_keuangan'] = true;
-        } else {
-            $validatedData['is_tim_keuangan'] = false;
-        }
+    // Create new user
+    $user = User::create($validatedData);
 
-        if ($request->is_unit == 'on') {
-            $validatedData['is_unit'] = true;
-        } else {
-            $validatedData['is_unit'] = false;
-        }
+    // Assuming $request->role contains the role name
+    $role = Role::where('name', $request->role)->first();
 
-        if ($request->is_operator == 'on') {
-            $validatedData['is_operator'] = true;
-        } else {
-            $validatedData['is_operator'] = false;
-        }
+    // Link the user with the selected role
+    $user->roles()->attach($role->id);
 
-        if ($request->is_pbj == 'on') {
-            $validatedData['is_pbj'] = true;
-        } else {
-            $validatedData['is_pbj'] = false;
-        }
+    return redirect()->route('operator.pegawai.index')->with('success', 'Pegawai berhasil ditambahkan');
+}
 
-        if ($request->is_ppk == 'on') {
-            $validatedData['is_ppk'] = true;
-        } else {
-            $validatedData['is_ppk'] = false;
-        }
-
-        if ($request->is_admin == 'on') {
-            $validatedData['is_admin'] = true;
-        } else {
-            $validatedData['is_admin'] = false;
-        }
-
-        $validatedData['password'] = Hash::make($request->password);
-
-         User::create($validatedData);
-
-        //dd($validatedData);
-        // if ($request->has('roles')) {
-        //     foreach ($request->roles as $role) {
-                
-        //         $user->assignRole($role);
-        //     }
-        // }
-        
-    
-        return redirect()->route('operator.pegawai.index')->with('success', 'Pegawai berhasil ditambahkan');
-    }
 
     /**
      * Display the specified resource.
@@ -183,19 +128,29 @@ class PegawaiController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
-        {
-            $request->validate([
-                'phone_number' => 'required|string|max:16',
-                'role' => 'required|string|exists:roles,name',
-            ]);
-    
-            $user->phone_number = $request->phone_number;
-            $user->role = $request->role;
-            $user->save();
-    
-            return redirect()->route('operator.pegawai.index')->with('success', 'Berhasil memperbarui data Pegawai!');
-        }
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'phone_number' => 'required|string|max:16',
+            'role' => 'required|string|exists:roles,name',
+        ]);
+
+        // Update user data
+        $user->name = $request->name;
+        $user->phone_number = $request->phone_number;
+        
+        // Get the selected role
+        $role = Role::where('name', $request->role)->first();
+
+        // Detach all roles except role with ID 3 (pegawai)
+        $user->roles()->detach();
+
+        // Attach the new role
+        $user->roles()->attach($role->id);
+
+        // Save user changes
+        $user->save();
+
+        return redirect()->route('operator.pegawai.index')->with('success', 'Berhasil memperbarui data Pegawai!');
     }
 
     /**

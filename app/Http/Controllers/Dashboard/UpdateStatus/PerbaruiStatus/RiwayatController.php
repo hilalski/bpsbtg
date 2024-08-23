@@ -80,56 +80,53 @@ class RiwayatController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request, $id)
-    {
-        $data1 = $request->all();
+{
+    $data1 = $request->all();
 
-        $izins = Izin::findOrFail($id);
-        // $izins->jam_kembali = $request->jam_kembali;
-
-        // // Calculate duration in PHP if needed
-        $jam_keluar = $izins->jam_keluar;
-        $jam_kembali = $request->jam_kembali;
-
-        
-        $jam_kembali = $request->input('jam_kembali');
-        $jam_keluar = $izins->jam_keluar;
+    $izins = Izin::findOrFail($id);
+    $jam_keluar = $izins->jam_keluar;
+    $jam_kembali = $request->input('jam_kembali');
     
-        if (!$jam_kembali) {
-            $currentTime = \Carbon\Carbon::now();
-            
-            if ($currentTime->isSameDay(\Carbon\Carbon::createFromFormat('H:i:s', $jam_keluar))) {
-                // If it's the same day as jam_keluar
-                if ($currentTime->hour >= 16) {
-                    $jam_kembali = '16:00:00';
-                } else {
-                    $jam_kembali = $currentTime->format('H:i:s');
-                }
-            } else {
-                // If it's not the same day as jam_keluar
+    if (!$jam_kembali) {
+        $currentTime = \Carbon\Carbon::now();
+        $createdAt = $izins->created_at;
+        $createdDate = $createdAt->toDateString();
+        $currentDate = $currentTime->toDateString();
+        
+        if ($currentDate !== $createdDate) {
+            // If the current date is different from the creation date
+            $jam_kembali = '16:00:00';
+        } else {
+            // If the current date is the same as the creation date
+            if ($currentTime->hour >= 16) {
                 $jam_kembali = '16:00:00';
+            } else {
+                $jam_kembali = $currentTime->format('H:i:s');
             }
         }
-        $izins->jam_kembali = $jam_kembali;
-
-        if ($jam_keluar && $jam_kembali) {
-            $keluar = \Carbon\Carbon::createFromFormat('H:i:s', $jam_keluar);
-            $kembali = \Carbon\Carbon::createFromFormat('H:i:s', $jam_kembali);
-            $duration = $keluar->diff($kembali)->format('%H:%I:%S');
-            $izins->durasi = $duration;
-        }
-
-        $izins->save();
-
-        $user = auth()->user();
-        if ($user instanceof User) {
-            $user->status = $data1['status'];
-            $user->save();
-        } else {
-            return redirect()->route('update-status.riwayat.index')->with('error', 'User tidak valid');
-        }
-
-        return redirect()->route('update-status.riwayat.index')->with('success', 'Berhasil memperbarui status!');
     }
+    $izins->jam_kembali = $jam_kembali;
+
+    if ($jam_keluar && $jam_kembali) {
+        $keluar = \Carbon\Carbon::createFromFormat('H:i:s', $jam_keluar);
+        $kembali = \Carbon\Carbon::createFromFormat('H:i:s', $jam_kembali);
+        $duration = $keluar->diff($kembali)->format('%H:%I:%S');
+        $izins->durasi = $duration;
+    }
+
+    $izins->save();
+
+    $user = auth()->user();
+    if ($user instanceof User) {
+        $user->status = $data1['status'];
+        $user->save();
+    } else {
+        return redirect()->route('update-status.riwayat.index')->with('error', 'User tidak valid');
+    }
+
+    return redirect()->route('update-status.riwayat.index')->with('success', 'Berhasil memperbarui status!');
+}
+
 
     /**
      * Update the specified resource in storage.

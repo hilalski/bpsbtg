@@ -7,25 +7,23 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Carbon\Carbon;
 
-class IzinsExport implements FromCollection, WithHeadings
+class IzinsExportRange implements FromCollection, WithHeadings
 {
     /**
     * @return \Illuminate\Support\Collection
     */
+    protected $tanggalAwal;
+    protected $tanggalAkhir;
 
-    protected $bulan;
-
-    public function __construct($bulan)
+    public function __construct($tanggalAwal, $tanggalAkhir)
     {
-        $this->bulan = $bulan;
+        $this->tanggalAwal = $tanggalAwal;
+        $this->tanggalAkhir = $tanggalAkhir;
     }
     public function collection()
     {
-        $currentYear = now()->year;
-
         return Izin::with('user')
-            ->whereMonth('tanggal', $this->bulan)
-            ->whereYear('tanggal', $currentYear)
+            ->whereBetween('tanggal', [$this->tanggalAwal, $this->tanggalAkhir])
             ->get()
             ->map(function ($izin) {
                 return [
@@ -38,7 +36,6 @@ class IzinsExport implements FromCollection, WithHeadings
                     'keterangan' => $izin->keterangan,
                 ];
             });
-
     }
 
     public function headings(): array
