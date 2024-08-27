@@ -187,7 +187,7 @@
                         >Keterangan</label
                         >
                         <div class="col-sm-10">
-                          <textarea name="keterangan" class="form-control" style="height: 100px" placeholder="Tuliskan keterangan kegiatan..." required></textarea>
+                          <textarea name="keterangan" class="form-control" style="height: 100px" placeholder="Isikan '-' jika memang ingin dikosongkan" required></textarea>
                         </div>
                     </div>
 

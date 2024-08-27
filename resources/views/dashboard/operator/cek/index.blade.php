@@ -62,7 +62,7 @@
                                     </td>
                                     <td class="align-middle">
                                         
-                                            <button class="btn btn-info small-button align-middle text-center">
+                                            <button class="btn btn-success small-button align-middle text-center">
                                                 <a class="text-decoration-none text-light fw-semibold d-flex align-items-center justify-content-center gap-1"
                                                 href="https://wa.me/{{ $user->phone_number }}" target="_blank">
                                                     <i class="bi bi-whatsapp"></i>

@@ -162,15 +162,17 @@ class PegawaiController extends Controller
     public function destroy($user)
     {
         $user = User::findOrFail($user);
-
         if (!$user) {
             return response()->json(['message' => 'User tidak ditemukan'], 404);
         }
 
-        // Delete related records in the users_role table
+        // Hapus semua izin yang terkait dengan user
+        DB::table('izins')->where('user_id', $user->id)->delete();
+
+        // Hapus data di tabel users_role
         DB::table('users_role')->where('user_id', $user->id)->delete();
 
-        // Now delete the user
+        // Hapus user
         $user->delete();
 
         return redirect('/dashboard/operator/pegawai')->with('success', 'User berhasil dihapus');

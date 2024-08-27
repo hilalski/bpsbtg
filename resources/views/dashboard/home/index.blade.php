@@ -73,8 +73,8 @@
                     <div class="col-lg-12">
                       <div class="card">
                         <div class="card-body">
-                          <h5 class="card-title">Tentang Sistem-3325</h5>
-                          <strong>Sistem-3325</strong> merupakan aplikasi untuk memantau keberadaan pegawai BPS Kabupaten Batang. 
+                          <h5 class="card-title">Tentang SIMASKO</h5>
+                          <strong>SIMASKO (Sistem Informasi Keluar Masuk Kantor)</strong> merupakan aplikasi untuk memantau keberadaan pegawai BPS Kabupaten Batang. 
                           Pegawai diharuskan untuk mengisikan perizinan keluar kantor apabila hendak meninggalkan kantor untuk melakukan perjalanan dinas, non dinas, ataupun istirahat. <br>
                           Selanjutnya, Pegawai juga diharuskan untuk mengisikan formulir kembali sebagai tanda bahwa pegawai telah selesai melakukan perizinan keluar kantor.
                         </div>
@@ -140,19 +140,21 @@
                                 </h2>
                                 <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                                   <div class="accordion-body">
-                                    <strong>Jika lupa mengisikan jam kembali, </strong> Anda dapat mengisikan jam kembali kapan saja, tetapi jam kembali akan tercatat berisi jam 16.00 pada hari di mana anda lupa mengisi jam kembali.
+                                    <strong>Jika lupa mengisikan jam kembali, </strong> Anda dapat mengisikan jam kembali kapan saja, tetapi jam kembali akan tercatat berisi jam 16.00 pada hari dibuatnya perizinan.
                                   </div>
                                 </div>
                               </div>
                               <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingFive">
                                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                    Pertanyaan #5
+                                    Who's Behind this Apps?
                                   </button>
                                 </h2>
                                 <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
                                   <div class="accordion-body">
-                                    <strong>Jawaban #5.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                    <strong>Tim Magang Politeknik Statistika STIS: </strong>
+                                    <p>Icha, Hala, Mafi, dan Yanuar</p>
+                                    <img src="{{ asset('assets/img/developer.jpg') }}" alt="Foto Developer" style="width: 100%; height: auto;">
                                   </div>
                                 </div>
                               </div>

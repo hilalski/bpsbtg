@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sistem-3325 | Dashboard</title>
+    <title>SIMASKO</title>
 
     <link href={{ asset('assets/img/logo2.png') }} rel="icon">
     <!-- CSS Start -->
