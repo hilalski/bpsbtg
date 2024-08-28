@@ -26,10 +26,10 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'Admin, S.Tr.Stat.',
-            'username' => 'sipalingadmin',
+            'username' => 'iniyanuar',
             'nip' => '123456789',
             'phone_number' => '6285325014275',
-            'password' => Hash::make('password'),
+            'password' => Hash::make('gataulupa'),
             'remember_token' => Str::random(10),
             'role' => 'Operator',
             'is_operator' => true,
