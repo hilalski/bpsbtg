@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             // $table->bigInteger('gaji')->nullable();
             $table->string('username')->unique();
             $table->string('nip')->unique();
-            $table->string('phone_number');
+            $table->string('phone_number')->nullable();
             // $table->string('unit')->nullable();
             // $table->string('picture')->nullable();
             $table->string('role')->nullable();

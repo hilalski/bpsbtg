@@ -26,8 +26,8 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'Admin, S.Tr.Stat.',
-            'username' => 'iniyanuar',
-            'nip' => '123456789',
+            'username' => 'yann',
+            'nip' => '12345678910',
             'phone_number' => '6285325014275',
             'password' => Hash::make('gataulupa'),
             'remember_token' => Str::random(10),
