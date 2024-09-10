@@ -2,15 +2,20 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Controllers\Dashboard\Profil\ProfilController;
+use App\Http\Controllers\Auth\PasswordController;
 
+use App\Http\Controllers\Dashboard\Operator\CekController;
+use App\Http\Controllers\Dashboard\Profil\ProfilController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\SPJController;
+
+
+use App\Http\Controllers\Dashboard\Operator\PegawaiController;
 use App\Http\Controllers\Dashboard\Pengadaan\DokumenController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\SpjPdController;
-
-
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\SpjTrController;
 use App\Http\Controllers\Dashboard\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\Operator\RiwayatAllController;
+use App\Http\Controllers\Dashboard\Operator\UpdateGajiController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\TabelSpjController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\TabelSpjPdController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\TabelSpjTrController;
@@ -19,30 +24,26 @@ use App\Http\Controllers\Dashboard\Keuangan\SKP\PengajuanSkpController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\PengajuanSpjController;
 use App\Http\Controllers\Dashboard\Keuangan\SKP\InfoPengajuanSKPController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\InfoPengajuanSpjController;
+use App\Http\Controllers\Dashboard\Operator\PengecekanSuratTugasController;
 use App\Http\Controllers\Dashboard\Pengadaan\Unit\DraftPengajuanController;
 use App\Http\Controllers\Dashboard\Keuangan\TimKeuangan\DetailSpjController;
+use App\Http\Controllers\Dashboard\SuratTugas\PengajuanSuratTugasController;
 use App\Http\Controllers\Dashboard\Keuangan\SKP\DetailPengajuanSkpController;
 use App\Http\Controllers\Dashboard\Keuangan\SPJ\DetailPengajuanSpjController;
 use App\Http\Controllers\Dashboard\Pengadaan\PBJ\UpdatingStatusPBJController;
 use App\Http\Controllers\Dashboard\Pengadaan\PPK\UpdatingStatusPPKController;
 use App\Http\Controllers\Dashboard\Pengadaan\PPK\RevisiPenolakanPPKController;
+use App\Http\Controllers\Dashboard\UpdateStatus\PerbaruiStatus\IzinController;
+
 use App\Http\Controllers\Dashboard\Keuangan\TimKeuangan\KonfirmasiSkpController;
 use App\Http\Controllers\Dashboard\Keuangan\TimKeuangan\KonfirmasiSPjController;
 use App\Http\Controllers\Dashboard\Pengadaan\Unit\RevisiPenolakanUnitController;
 use App\Http\Controllers\Dashboard\SuratTugas\InfoPengajuanSuratTugasController;
-use App\Http\Controllers\Dashboard\SuratTugas\PengajuanSuratTugasController;
+use App\Http\Controllers\Dashboard\UpdateStatus\PerbaruiStatus\RiwayatController;
+
 use App\Http\Controllers\Dashboard\SuratTugas\DetailPengajuanSuratTugasController;
 use App\Http\Controllers\Dashboard\SuratTugas\PersetujuanSuratTugas\PersetujuanSuratTugasController;
 use App\Http\Controllers\Dashboard\SuratTugas\PersetujuanSuratTugas\DetailPersetujuanSuratTugasController;
-
-use App\Http\Controllers\Dashboard\Operator\PegawaiController;
-use App\Http\Controllers\Dashboard\Operator\CekController;
-use App\Http\Controllers\Dashboard\Operator\PengecekanSuratTugasController;
-use App\Http\Controllers\Dashboard\Operator\RiwayatAllController;
-use App\Http\Controllers\Dashboard\Operator\UpdateGajiController;
-
-use App\Http\Controllers\Dashboard\UpdateStatus\PerbaruiStatus\IzinController;
-use App\Http\Controllers\Dashboard\UpdateStatus\PerbaruiStatus\RiwayatController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,10 +55,12 @@ use App\Http\Controllers\Dashboard\UpdateStatus\PerbaruiStatus\RiwayatController
 |
 */
 
-
+Route::put('/dashboard/profil/password', [PasswordController::class, 'update'])->name('password.update');
 Route::middleware(['auth', 'formatUserName'])->prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('home.index');
     // Profil
+    // Route::put('/profil', [PasswordController::class, 'update'])->name('password.update');
+   
     Route::controller(ProfilController::class)->name('profil.')->group(function () {
         Route::get('/profil', 'edit')->name('edit');
         Route::put('/profil', 'update')->name('update');
